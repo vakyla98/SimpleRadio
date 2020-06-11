@@ -1,17 +1,21 @@
 <template>
-    <div class="controls">
+    <div class="controls pa-2">
         <audio ref="currentAudio" :src="url" />
-        <v-btn
-            small
-            color="orange"
-            @click="toggleStateAudio"
-            v-text="isPlayed ? 'Stop' : 'Play'"
-        ></v-btn>
-        <v-btn small color="orange" @click="runBack"
+        <v-btn class="ma-1" small color="orange" @click="toggleStateAudio"
+            ><v-icon v-if="isPlayed">mdi-pause</v-icon>
+            <v-icon v-else>mdi-play</v-icon>
+        </v-btn>
+        <v-btn class="ma-1" small color="orange" @click="runBack"
             ><v-icon>mdi-rewind-10</v-icon>
         </v-btn>
-        <v-btn small color="orange" @click="toStreamStart">Reload</v-btn>
-        <input-range :volume="volume" @changeVolume="changeVolume" />
+        <v-btn class="ma-1" small color="orange" @click="toStreamStart"
+            ><v-icon>mdi-reload</v-icon></v-btn
+        >
+        <input-range
+            class="ma-1"
+            :volume.sync="volume"
+            @changeVolume="changeVolume"
+        />
     </div>
 </template>
 <script>
@@ -64,3 +68,18 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+@import '../style/vars.scss';
+.controls {
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $orange;
+    border-radius: 10px;
+    height: 50px;
+    background: rgb(145,145,145);
+background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(177,99,51,1) 46%, rgba(0,0,0,1) 100%);
+}
+</style>
