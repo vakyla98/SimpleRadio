@@ -13,6 +13,8 @@
         >
         <input-range
             class="ma-1"
+            :isMuted="isMuted"
+            @muteHandler="toggleMute"
             :volume.sync="volume"
             @changeVolume="changeVolume"
         />
@@ -34,6 +36,7 @@ export default {
     data() {
         return {
             isPlayed: false,
+            isMuted: false,
             volume: '0.5',
         }
     },
@@ -59,11 +62,22 @@ export default {
         changeVolume(newVolume) {
             this.volume = newVolume
         },
+        toggleMute() {
+            this.isMuted = !this.isMuted
+            if (this.isMuted === true) {
+                this.$refs.currentAudio.volume = 0
+            } else {
+                this.$refs.currentAudio.volume = this.volume
+            }
+        },
     },
     watch: {
         volume() {
-            console.log(this.volume)
-            this.$refs.currentAudio.volume = this.volume
+            if (this.isMuted === true) {
+                this.$refs.currentAudio.volume = 0
+            } else {
+                this.$refs.currentAudio.volume = this.volume
+            }
         },
     },
 }
@@ -77,7 +91,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    
     border-radius: 10px;
     height: 50px;
 }

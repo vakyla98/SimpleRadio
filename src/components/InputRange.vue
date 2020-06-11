@@ -1,8 +1,11 @@
 <template>
-    <label for="volume">
-        <v-btn small color="orange" :ripple="false"
-            ><v-icon class='mr-2'>mdi-volume-high</v-icon
-            ><input
+    <div class="volume-control">
+        <v-btn small color="orange" :ripple="false">
+            <div class="volume-mute" @click='$emit("muteHandler")'>
+                <v-icon class="mr-2" v-if='isMuted'>mdi-volume-off</v-icon>
+                <v-icon class="mr-2" v-else>mdi-volume-high</v-icon>
+            </div>
+            <input
                 class="volume-input"
                 ref="volumeInput"
                 type="range"
@@ -13,12 +16,16 @@
                 v-model="currentVolume"
                 step="0.01"
         /></v-btn>
-    </label>
+    </div>
 </template>
 <script>
 export default {
     name: 'InputRange',
     props: {
+        isMuted:{
+            type:Boolean,
+            required:true
+        },
         volume: {
             type: String,
             required: true,
@@ -35,11 +42,6 @@ export default {
             },
         },
     },
-    watch: {
-        volume() {
-            console.log(this.volume)
-        },
-    },
 }
 </script>
 <style lang="scss">
@@ -51,6 +53,7 @@ input[type='range'] {
     padding: 0 2px;
     border: 2px solid black;
     border-radius: 8px;
+    cursor: pointer;
     outline: none;
     overflow: hidden;
     -webkit-appearance: none;
@@ -60,8 +63,8 @@ input[type='range']::-webkit-slider-thumb {
     width: 10px;
     -webkit-appearance: none;
     height: 10px;
+
     border-radius: 5px;
-    cursor: ew-resize;
     background: black;
 }
 </style>
