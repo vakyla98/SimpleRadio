@@ -1,5 +1,7 @@
 @import './mixins.scss';
+@import './vars.scss';
+@import './fonts.scss';
 
-body{
-    background: black;
+* {
+    font-family: 'Roboto', sans-serif;
 }

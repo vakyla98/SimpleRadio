@@ -1,11 +1,11 @@
 <template>
-    <div id="app">
+    <v-app id="app">
         <div class="audio-wrapper">
             Some text
             <audio src="http://62.80.190.246:8000/PRK128" controls></audio>
         </div>
-        <ControlPanel :url="curUrl"/>
-    </div>
+        <ControlPanel :url="curUrl" />
+    </v-app>
 </template>
 
 <script>

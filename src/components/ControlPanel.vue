@@ -1,9 +1,16 @@
 <template>
     <div class="controls">
         <audio ref="currentAudio" :src="url" />
-        <button ref="playBtn" @click="toggleStateAudio">X</button>
-        <button ref="backBtn" @click="runBack">Back</button>
-        <button ref="backBtn" @click="toStreamStart">To start</button>
+        <v-btn
+            small
+            color="orange"
+            @click="toggleStateAudio"
+            v-text="isPlayed ? 'Stop' : 'Play'"
+        ></v-btn>
+        <v-btn small color="orange" @click="runBack"
+            ><v-icon>mdi-rewind-10</v-icon>
+        </v-btn>
+        <v-btn small color="orange" @click="toStreamStart">Reload</v-btn>
         <input-range :volume="volume" @changeVolume="changeVolume" />
     </div>
 </template>

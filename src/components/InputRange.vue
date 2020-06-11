@@ -29,10 +29,13 @@ export default {
                 return this.volume
             },
             set() {
-                console.log(this.volume)
                 this.$emit('changeVolume', this.$refs.volumeInput.value)
             },
         },
     },
 }
 </script>
+<style lang="scss">
+@import '../style/vars.scss';
+
+</style>
