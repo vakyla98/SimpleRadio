@@ -44,9 +44,7 @@ export default {
 </script>
 <style lang="scss">
 @import '../style/vars.scss';
-.volume-input{
-    
-}
+
 input[type='range'] {
     height: 16px;
     width: 100%;

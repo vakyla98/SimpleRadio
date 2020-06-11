@@ -1,5 +1,5 @@
 <template>
-    <div class="controls pa-2">
+    <div class="controls shadow main-grad pa-2 ma-2">
         <audio ref="currentAudio" :src="url" />
         <v-btn class="ma-1" small color="orange" @click="toggleStateAudio"
             ><v-icon v-if="isPlayed">mdi-pause</v-icon>
@@ -71,15 +71,14 @@ export default {
 
 <style lang="scss">
 @import '../style/vars.scss';
+@import '../style/mixins.scss';
 .controls {
     width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $orange;
+    
     border-radius: 10px;
     height: 50px;
-    background: rgb(145,145,145);
-background: linear-gradient(90deg, rgba(145,145,145,1) 0%, rgba(177,99,51,1) 46%, rgba(0,0,0,1) 100%);
 }
 </style>
