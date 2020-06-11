@@ -1,13 +1,30 @@
 <template>
-  <div id="app">
-    <audio src="http://62.80.190.246:8000/PRK128" controls></audio>
-  </div>
+    <div id="app">
+        <div class="audio-wrapper">
+            Some text
+            <audio src="http://62.80.190.246:8000/PRK128" controls></audio>
+        </div>
+        <ControlPanel :url="curUrl"/>
+    </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-
+import ControlPanel from './components/ControlPanel'
 export default {
-  name: "App",
-};
+    name: 'App',
+    components: {
+        ControlPanel,
+    },
+    data() {
+        return {
+            curUrl: 'http://online.radioplayer.ua/FlashRadio',
+        }
+    },
+}
 </script>
+<style lang="scss">
+.audio-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+</style>
