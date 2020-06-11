@@ -1,6 +1,5 @@
 module.exports = {
-  "publicPath": "/dist",
-  "transpileDependencies": [
-    "vuetify"
-  ]
+    publicPath:
+        process.env.NODE_ENV === 'production' ? '/SimpleRadio/dist' : '/dist',
+    transpileDependencies: ['vuetify'],
 }
