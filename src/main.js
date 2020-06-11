@@ -5,16 +5,20 @@ import '@/style/style.scss'
 import '@babel/polyfill'
 import vuetify from './plugins/vuetify'
 
-// import firebaseConfig from './config/firebase'
-// import firebase from 'firebase'
-// import store from './store'
+import firebaseConfig from './config/firebase'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import store from './store'
 
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig)
 
 Vue.config.productionTip = false
 
+const database = firebase.database();
+database
+
 new Vue({
     vuetify,
-    // store,
-    render: h => h(App)
+    store,
+    render: h => h(App),
 }).$mount('#app')

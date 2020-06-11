@@ -1,7 +1,7 @@
 <template>
     <div class="controls shadow main-grad pa-2 ma-2">
         <audio ref="currentAudio" :src="url" />
-        <v-btn class="ma-1" small color="orange" @click="toggleStateAudio"
+        <v-btn class="ma-1 flex-grow-1" small color="orange" @click="toggleStateAudio"
             ><v-icon v-if="isPlayed">mdi-pause</v-icon>
             <v-icon v-else>mdi-play</v-icon>
         </v-btn>
@@ -87,11 +87,11 @@ export default {
 @import '../style/vars.scss';
 @import '../style/mixins.scss';
 .controls {
-    width: max-content;
+    align-self: center;
+    flex-wrap:wrap;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    height: 50px;
 }
 </style>
