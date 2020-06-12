@@ -11,11 +11,10 @@ import 'firebase/database'
 import store from './store'
 
 firebase.initializeApp(firebaseConfig)
+export const db = firebase.database();
 
 Vue.config.productionTip = false
 
-const database = firebase.database();
-database
 
 new Vue({
     vuetify,

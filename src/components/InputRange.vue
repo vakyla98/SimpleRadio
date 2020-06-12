@@ -78,3 +78,4 @@ input[type='range']::-webkit-slider-thumb {
     background: black;
 }
 </style>
+
