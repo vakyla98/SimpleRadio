@@ -1,18 +1,32 @@
 <template>
-    <div class='player-page'>
-        <Player v-if='!getLoadingState'/>
+    <div class="player-page">
+        <Player :station="station" />
+        <station-card :station="station" />
     </div>
 </template>
 <script>
 import Player from '../components/Player.vue'
-import {mapGetters} from 'vuex'
+import StationCard from '../components/StationCard'
+import { mapGetters } from 'vuex'
+
 export default {
-    name:'PlaterPage',
-    components:{
-        Player
+    name: 'PlayerPage',
+    components: {
+        Player,
+        StationCard,
     },
-    computed:{
-        ...mapGetters(['getLoadingState'])
-    }
+    data() {
+        return {
+            stationRoute: this.$route.params.stationRoute,
+            station: {},
+        }
+    },
+
+    beforeMount() {
+        this.station = this.getStationByRoute(this.stationRoute)
+    },
+    computed: {
+        ...mapGetters(['getStationByRoute']),
+    },
 }
 </script>

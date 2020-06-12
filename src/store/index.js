@@ -18,9 +18,6 @@ export default new Vuex.Store({
   actions: {
   },
   getters:{
-    getLoadingState(state) {
-        return state.isLoading
-    },
   },
   modules: {
     userModule,

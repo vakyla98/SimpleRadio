@@ -1,13 +1,13 @@
 <template>
     <v-app id="app">
         <Header />
-        <loading-overlay v-if="getLoadingState"></loading-overlay>
-        <router-view />
+        <loading-overlay v-if="isLoading"></loading-overlay>
+        <router-view v-else class='container' />
     </v-app>
 </template>
 
 <script>
-import { mapActions, mapMutations, mapGetters } from 'vuex'
+import { mapActions, mapMutations,mapState } from 'vuex'
 import Header from './components/Header'
 import LoadingOverlay from './components/LoadingOverlay'
 export default {
@@ -16,17 +16,12 @@ export default {
         Header,
         LoadingOverlay,
     },
-    data() {
-        return {
-            isLoading: true,
-        }
-    },
     methods: {
         ...mapActions(['fetchStations']),
         ...mapMutations(['changeLoadingState']),
     },
     computed: {
-        ...mapGetters(['getLoadingState']),
+        ...mapState(['isLoading'])
     },
     async mounted() {
         await this.fetchStations()
@@ -34,3 +29,10 @@ export default {
     },
 }
 </script>
+<style lang='scss'>
+.container{
+    width:100%;
+    max-width:960px;
+    margin:0 auto;
+}
+</style>

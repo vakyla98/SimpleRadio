@@ -5,24 +5,22 @@
 </template>
 <script>
 import ControlPanel from './ControlPanel.vue'
-import { mapGetters } from 'vuex'
 export default {
     name: 'Player',
     components: {
         ControlPanel,
     },
-    data() {
-        return {
-            stationName: this.$route.params.stationName,
-            station: {},
+    props:{
+        station:{
+            type:Object,
+            required:true
         }
-    },
-    computed: {
-        ...mapGetters(['getAllStations', 'getLoadingState']),
-    },
-    async beforeMount() {
-        let all = this.getAllStations
-        this.station = all[this.stationName]
     },
 }
 </script>
+<style lang="scss">
+.player {
+    max-width: 450px;
+    margin: 0 auto;
+}
+</style>

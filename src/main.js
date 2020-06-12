@@ -5,17 +5,10 @@ import '@/style/style.scss'
 import '@babel/polyfill'
 import vuetify from './plugins/vuetify'
 
-import firebaseConfig from './config/firebase'
-import firebase from 'firebase/app'
-import 'firebase/database'
 import store from './store'
 import router from './router'
 
-firebase.initializeApp(firebaseConfig)
-export const db = firebase.database();
-
 Vue.config.productionTip = false
-
 
 new Vue({
     vuetify,

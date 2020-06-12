@@ -1,26 +1,24 @@
 <template>
-    <div class="station-list">
+    <div class="station-page">
         <v-btn dark @click="xxx">X</v-btn>
+        <stations-list :stations="getAllStations" />
     </div>
 </template>
 
 <script>
 let x = 0
 import { mapGetters } from 'vuex'
+import StationsList from '../components/StationsList.vue'
 export default {
-    name: 'StationList',
-    components: {},
+    name: 'StationPage',
+    components: { StationsList },
     data() {
-        return {
-            curUrl: 'http://online.radioplayer.ua/FlashRadio',
-        }
+        return {}
     },
     methods: {
-
         xxx() {
             x = this.getAllStations
             console.log(x)
-            // id++
             // db.ref('stations/' + id).set({
             //     bump: 'dump',
             //     gump: 'puml',

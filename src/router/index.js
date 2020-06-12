@@ -5,13 +5,13 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'StationsList',
-        component: () => import('../views/StationsList.vue')
+        name: 'StationsPage',
+        component: () => import('../views/StationsPage.vue'),
     },
     {
-        path: '/player/:stationName',
+        path: '/player/:stationRoute',
         name: 'Player',
-        component: () => import('../views/PlayerPage.vue')
+        component: () => import('../views/PlayerPage.vue'),
     },
 ]
 
