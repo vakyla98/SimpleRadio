@@ -1,0 +1,52 @@
+<template>
+    <div class="header">
+        <v-app-bar color="grey">
+            <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+            <v-toolbar-title
+                >Simple radio<v-icon class="ml-3"
+                    >mdi-radio</v-icon
+                ></v-toolbar-title
+            >
+        </v-app-bar>
+
+        <v-navigation-drawer
+            v-model="drawer"
+            absolute
+            color="grey lighten-1"
+            temporary
+        >
+            <v-list nav dense>
+                <v-list-item-group active-class="orange--text text--accent-4">
+                    <v-list-item to="/" exact>
+                        <v-list-item-icon>
+                            <v-icon>mdi-home</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>All stations</v-list-item-title>
+                    </v-list-item>
+
+                    <v-list-item to="/player">
+                        <v-list-item-icon>
+                            <v-icon>mdi-account</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-title>Account</v-list-item-title>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
+    </div>
+</template>
+<script>
+export default {
+    name: 'Header',
+    data() {
+        return {
+            drawer: false,
+        }
+    },
+}
+</script>
+<style>
+.v-toolbar__title {
+    display: flex;
+}
+</style>

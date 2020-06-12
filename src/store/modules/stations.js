@@ -1,4 +1,4 @@
-import {db} from '../../main'
+import axios from 'axios'
 export default {
     state: {
         stations: [],
@@ -10,18 +10,14 @@ export default {
     },
     actions: {
         async fetchStations(ctx) {
-            let stations = []
-            let info = db.ref().child('stations/')
-            info.once('value', snapshot => {
-                snapshot.forEach(el => {
-                    stations.push(el.toJSON())
-                })
-            })
+            let stations = await axios.get(
+                'https://simple-radio-x.firebaseio.com/stations.json'
+            ).then(res => res.data)
             ctx.commit('updateStations', stations)
         },
     },
     getters: {
-        getAllStations(state){
+        getAllStations(state) {
             return state.stations
         },
     },
