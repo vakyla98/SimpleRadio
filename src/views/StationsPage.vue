@@ -1,8 +1,10 @@
 <template>
-    <div class="station-page">
-        <v-btn dark @click="xxx">X</v-btn>
-        <stations-list :stations="getAllStations" />
-    </div>
+    <keep-alive>
+        <div class="station-page">
+            <v-btn dark @click="xxx">Удали эту кнопку</v-btn>
+            <stations-list :stations="getAllStations" />
+        </div>
+    </keep-alive>
 </template>
 
 <script>
@@ -19,10 +21,6 @@ export default {
         xxx() {
             x = this.getAllStations
             console.log(x)
-            // db.ref('stations/' + id).set({
-            //     bump: 'dump',
-            //     gump: 'puml',
-            // })
         },
     },
     computed: {

@@ -1,5 +1,5 @@
 <template>
-    <div class="controls shadow main-grad pa-2 ma-2">
+    <div class="controls shadow main-grad pa-2">
         <audio ref="currentAudio" :src="url" />
         <v-btn
             class="ma-1 flex-grow-1 flex-sm-grow-0"
