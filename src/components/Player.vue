@@ -21,6 +21,5 @@ export default {
 <style lang="scss">
 .player {
     max-width: 450px;
-    margin: 0 auto;
 }
 </style>

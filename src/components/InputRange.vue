@@ -54,6 +54,7 @@ export default {
 .volume-control {
     display: flex;
     flex-grow: 1;
+    // min-width: 250px;
     &__input-wrapper {
         width: 100%;
     }

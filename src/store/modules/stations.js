@@ -11,6 +11,7 @@ export default {
     actions: {
         async fetchStations(ctx) {
             let stations = []
+            //request give not an array of objects, so we structure the data as we need
             await axios
                 .get('https://simple-radio-x.firebaseio.com/stations.json')
                 .then(res => {

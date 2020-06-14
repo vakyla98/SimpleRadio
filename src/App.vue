@@ -32,11 +32,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.container {
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-}
+
 .fade-move {
     transition: transform 0.2s;
 }

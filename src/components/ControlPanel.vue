@@ -16,7 +16,7 @@
             ><v-icon>mdi-reload</v-icon></v-btn
         >
         <input-range
-            class="ma-1"
+            class="ma-1 input-range"
             :isMuted="isMuted"
             @muteHandler="toggleMute"
             :volume.sync="volume"
@@ -97,4 +97,5 @@ export default {
     align-items: center;
     border-radius: 10px;
 }
+
 </style>
