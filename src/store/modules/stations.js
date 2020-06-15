@@ -1,4 +1,5 @@
 import { stationService } from '../../services'
+
 export default {
     state: {
         stations: [],
@@ -10,8 +11,10 @@ export default {
     },
     actions: {
         async fetchStations(ctx) {
+            ctx.commit('changeLoadingState', true)
             let stations = await stationService.getAllStations()
             ctx.commit('updateStations', stations)
+            ctx.commit('changeLoadingState', false)
         },
     },
     getters: {

@@ -1,38 +1,38 @@
 <template>
-    <form>
+    <form class="container">
+        <span>Current count stations: </span>
         <v-text-field
-            v-model="name"
+            v-model.trim="image"
+            :error-messages="imageErrors"
+            label="Image URL"
+            required
+            @input="$v.image.$touch()"
+            @blur="$v.image.$touch()"
+        ></v-text-field>
+        <v-text-field
+            v-model.trim="name"
             :error-messages="nameErrors"
-            label="Name"
+            label="Station name"
             required
             @input="$v.name.$touch()"
             @blur="$v.name.$touch()"
         ></v-text-field>
         <v-text-field
-            v-model="email"
-            :error-messages="emailErrors"
-            label="E-mail"
+            v-model.trim="route"
+            :error-messages="routeErrors"
+            label="Station route"
             required
-            @input="$v.email.$touch()"
-            @blur="$v.email.$touch()"
+            @input="$v.route.$touch()"
+            @blur="$v.route.$touch()"
         ></v-text-field>
-        <v-select
-            v-model="select"
-            :items="items"
-            :error-messages="selectErrors"
-            label="Item"
+        <v-text-field
+            v-model.trim="url"
+            :error-messages="urlErrors"
+            label="Station URL"
             required
-            @change="$v.select.$touch()"
-            @blur="$v.select.$touch()"
-        ></v-select>
-        <v-checkbox
-            v-model="checkbox"
-            :error-messages="checkboxErrors"
-            label="Do you agree?"
-            required
-            @change="$v.checkbox.$touch()"
-            @blur="$v.checkbox.$touch()"
-        ></v-checkbox>
+            @input="$v.url.$touch()"
+            @blur="$v.url.$touch()"
+        ></v-text-field>
 
         <v-btn class="mr-4" @click="submit">submit</v-btn>
         <v-btn @click="clear">clear</v-btn>
@@ -41,74 +41,83 @@
 
 <script>
 import { validationMixin } from 'vuelidate'
-import { required, maxLength, email } from 'vuelidate/lib/validators'
+import { required, url } from 'vuelidate/lib/validators'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
+import { db_Service } from '../services'
 
 export default {
     mixins: [validationMixin],
 
     validations: {
-        name: { required, maxLength: maxLength(10) },
-        email: { required, email },
-        select: { required },
-        checkbox: {
-            checked(val) {
-                return val
-            },
-        },
+        image: { required, url },
+        name: { required },
+        route: { required },
+        url: { required, url },
     },
 
     data: () => ({
+        image: '',
         name: '',
-        email: '',
-        select: null,
-        items: ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
-        checkbox: false,
+        route: '',
+        url: '',
     }),
 
     computed: {
-        checkboxErrors() {
+        ...mapGetters(['getAllStations']),
+        imageErrors() {
             const errors = []
-            if (!this.$v.checkbox.$dirty) return errors
-            !this.$v.checkbox.checked &&
-                errors.push('You must agree to continue!')
-            return errors
-        },
-        selectErrors() {
-            const errors = []
-            if (!this.$v.select.$dirty) return errors
-            !this.$v.select.required && errors.push('Item is required')
+            if (!this.$v.image.$dirty) return errors
+            !this.$v.image.required && errors.push('Image URL is required')
+            !this.$v.image.url && errors.push('This is not URL')
             return errors
         },
         nameErrors() {
             const errors = []
             if (!this.$v.name.$dirty) return errors
-            !this.$v.name.maxLength &&
-                errors.push('Name must be at most 10 characters long')
-            !this.$v.name.required && errors.push('Name is required.')
+            !this.$v.name.required && errors.push('Name is required')
             return errors
         },
-        emailErrors() {
+        routeErrors() {
             const errors = []
-            if (!this.$v.email.$dirty) return errors
-            !this.$v.email.email && errors.push('Must be valid e-mail')
-            !this.$v.email.required && errors.push('E-mail is required')
+            if (!this.$v.route.$dirty) return errors
+            !this.$v.route.required && errors.push('Route is required')
+            return errors
+        },
+        urlErrors() {
+            const errors = []
+            if (!this.$v.url.$dirty) return errors
+            !this.$v.url.required && errors.push('URL is required')
+            !this.$v.url.url && errors.push('This is not URL')
             return errors
         },
     },
 
     methods: {
-        submit() {
-            this.$v.$touch()
+        ...mapActions(['fetchStations']),
+        ...mapMutations(['changeLoadingState']),
+        async submit() {
+            if (this.$v.$invalid) {
+                this.$v.$touch()
+                return
+            } else {
+                let data = {
+                    image: this.image,
+                    name: this.name,
+                    route: this.route,
+                    url: this.url,
+                }
+                await db_Service.addStation(data)
+                await this.fetchStations() //update storage
+                this.clear()
+            }
         },
         clear() {
             this.$v.$reset()
             this.name = ''
-            this.email = ''
-            this.select = null
-            this.checkbox = false
+            this.url = ''
+            this.route = ''
+            this.image = ''
         },
     },
 }
 </script>
-
-// db.ref('stations/' + id).set({ // bump: 'dump', // gump: 'puml', // })

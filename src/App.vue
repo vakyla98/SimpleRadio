@@ -27,7 +27,6 @@ export default {
     },
     async mounted() {
         await this.fetchStations()
-        this.changeLoadingState(false)
     },
 }
 </script>

@@ -24,11 +24,11 @@
                         <v-list-item-title>All stations</v-list-item-title>
                     </v-list-item>
 
-                    <v-list-item to="/player">
+                    <v-list-item to="/add-station">
                         <v-list-item-icon>
-                            <v-icon>mdi-account</v-icon>
+                            <v-icon>mdi-plus</v-icon>
                         </v-list-item-icon>
-                        <v-list-item-title>Account</v-list-item-title>
+                        <v-list-item-title>Add station</v-list-item-title>
                     </v-list-item>
                 </v-list-item-group>
             </v-list>

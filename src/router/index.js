@@ -9,9 +9,19 @@ const routes = [
         component: () => import('../views/StationsPage.vue'),
     },
     {
+        path: '/add-station',
+        name: 'CreateStationPage',
+        component: () => import('../views/CreateStationPage.vue'),
+    },
+    {
         path: '/player/:stationRoute',
         name: 'Player',
         component: () => import('../views/PlayerPage.vue'),
+    },
+    {
+        path: '*',
+        name: '404',
+        component: () => import('../views/StationsPage.vue'),
     },
 ]
 
