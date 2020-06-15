@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { stationService } from '../../services'
 export default {
     state: {
         stations: [],
@@ -10,15 +10,7 @@ export default {
     },
     actions: {
         async fetchStations(ctx) {
-            let stations = []
-            //request give not an array of objects, so we structure the data as we need
-            await axios
-                .get('https://simple-radio-x.firebaseio.com/stations.json')
-                .then(res => {
-                    for (let prop in res.data) {
-                        stations.push(res.data[prop])
-                    }
-                })
+            let stations = await stationService.getAllStations()
             ctx.commit('updateStations', stations)
         },
     },
