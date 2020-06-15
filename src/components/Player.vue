@@ -19,7 +19,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.player {
-    max-width: 450px;
-}
+
 </style>

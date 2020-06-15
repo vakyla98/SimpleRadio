@@ -1,7 +1,16 @@
 <template>
-    <div class="player-page container d-flex align-center flex-column">
-        <station-card :station="station" class="my-5" />
-        <Player :station="station"  class="mt-5" />
+    <div class="player-page d-flex custom-container flex-column">
+        <div class="player-info pa-5 mb-5 mt-5 shadow main-grad">
+            <v-btn small class="player-info__btn" color="orange">
+                <v-icon>mdi-menu-left</v-icon>
+            </v-btn>
+            <station-card :station="station" class="mx-5" />
+            <v-btn small class="player-info__btn" color="orange">
+                <v-icon>mdi-menu-right</v-icon>
+            </v-btn>
+        </div>
+
+        <Player :station="station" />
     </div>
 </template>
 <script>
@@ -31,14 +40,20 @@ export default {
 }
 </script>
 <style lang="scss">
+.custom-container{
+    padding: 0 10px;
+    width:100%;
+    max-width:480px;
+    margin: 0 auto;
+}
 .player-info {
-    background-color: green;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 450px;
     border-radius: 10px;
-    // margin: 0 auto;
+    align-items: stretch;
+    &__btn {
+        height: inherit !important;
+        flex-grow: 1;
+    }
     &__text {
         line-height: 32px;
         font-size: 14px;

@@ -1,7 +1,7 @@
 <template>
     <div class="station-list">
         <station-card
-            class="station-card_clickable ma-3"
+            class="station-card_clickable ma-1 ma-sm-3"
             v-for="station in stations"
             :station="station"
             :key="station.name"
@@ -32,6 +32,7 @@ export default {
 }
 .station-card_clickable {
     cursor: pointer;
+    width: 25%;
     transition: 0.2s;
     &:hover {
         transform: translateY(-5px);

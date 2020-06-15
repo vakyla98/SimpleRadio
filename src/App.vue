@@ -3,7 +3,7 @@
         <Header />
         <loading-overlay v-if="isLoading"></loading-overlay>
         <transition v-else name="fade" mode="out-in">
-            <router-view class="container" />
+            <router-view/>
         </transition>
     </v-app>
 </template>

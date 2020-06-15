@@ -2,21 +2,21 @@
     <div class="controls shadow main-grad pa-2">
         <audio ref="currentAudio" :src="url" />
         <v-btn
-            class="ma-1 flex-grow-1 flex-sm-grow-0"
+            class="controls__btn"
             small
             color="orange"
             @click="toggleStateAudio"
             ><v-icon v-if="isPlayed">mdi-pause</v-icon>
             <v-icon v-else>mdi-play</v-icon>
         </v-btn>
-        <v-btn class="ma-1" small color="orange" @click="runBack"
+        <v-btn class="controls__btn" small color="orange" @click="runBack"
             ><v-icon>mdi-rewind-10</v-icon>
         </v-btn>
-        <v-btn class="ma-1" small color="orange" @click="toStreamStart"
+        <v-btn class="controls__btn" small color="orange" @click="toStreamStart"
             ><v-icon>mdi-reload</v-icon></v-btn
         >
         <input-range
-            class="ma-1 input-range"
+            class=" controls__input-range"
             :isMuted="isMuted"
             @muteHandler="toggleMute"
             :volume.sync="volume"
@@ -89,6 +89,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../style/mixins.scss';
 .controls {
     align-self: center;
     flex-wrap: wrap;
@@ -96,6 +97,16 @@ export default {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+    &__btn {
+        margin: 3px;
+        flex-grow: 1;
+        @include screen(min, 600px) {
+            flex-grow: 0;
+        }
+    }
+    &__input-range {
+        margin: 3px;
+        min-width: 100px;
+    }
 }
-
 </style>
