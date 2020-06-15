@@ -85,7 +85,6 @@ export default {
             }
         },
         url() {
-            console.log('catch')
             if (this.isPlayed) {
                 this.restartStream()
             }
