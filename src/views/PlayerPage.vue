@@ -1,5 +1,5 @@
 <template>
-    <div class="player-page d-flex custom-container flex-column">
+    <div class="player-page d-flex player-container container flex-column">
         <div class="player-info pa-5 mb-5 mt-2 mt-sm-5 shadow main-grad">
             <v-btn
                 small
@@ -26,7 +26,6 @@
                 <v-icon>mdi-menu-right</v-icon>
             </v-btn>
         </div>
-
         <Player :station="station" />
     </div>
 </template>
@@ -70,11 +69,8 @@ export default {
 }
 </script>
 <style lang="scss">
-.custom-container {
-    padding: 0 10px;
-    width: 100%;
+.player-container {
     max-width: 480px;
-    margin: 0 auto;
 }
 .player-info {
     display: flex;

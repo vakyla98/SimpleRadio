@@ -1,5 +1,5 @@
 <template>
-    <form class="container">
+    <form class="container form-container">
         <span>Current count stations: {{ getAllStations.length }} </span>
         <v-text-field
             v-model.trim="image"
@@ -121,3 +121,8 @@ export default {
     },
 }
 </script>
+<style lang="scss">
+.form-container {
+    max-width: 800px;
+}
+</style>
