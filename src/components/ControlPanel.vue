@@ -12,7 +12,7 @@
         <v-btn class="controls__btn" small color="orange" @click="runBack"
             ><v-icon>mdi-rewind-10</v-icon>
         </v-btn>
-        <v-btn class="controls__btn" small color="orange" @click="toStreamStart"
+        <v-btn class="controls__btn" small color="orange" @click="restartStream"
             ><v-icon>mdi-reload</v-icon></v-btn
         >
         <input-range
@@ -57,8 +57,8 @@ export default {
             this.isPlayed = true
             this.$refs.currentAudio.play()
         },
-        toStreamStart() {
-            this.$refs.currentAudio.load()
+        async restartStream() {
+            await this.$refs.currentAudio.load()
             this.playAudio()
         },
         runBack() {
@@ -82,6 +82,12 @@ export default {
                 this.$refs.currentAudio.volume = 0
             } else {
                 this.$refs.currentAudio.volume = this.volume
+            }
+        },
+        url() {
+            console.log('catch')
+            if (this.isPlayed) {
+                this.restartStream()
             }
         },
     },

@@ -1,3 +1,2 @@
 Create cookie for volume in InputRange
-
-Vuelidate to admin form
+Timer

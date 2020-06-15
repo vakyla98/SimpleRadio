@@ -1,6 +1,6 @@
 <template>
     <form class="container">
-        <span>Current count stations: </span>
+        <span>Current count stations: {{ getAllStations.length }} </span>
         <v-text-field
             v-model.trim="image"
             :error-messages="imageErrors"

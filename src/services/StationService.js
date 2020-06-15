@@ -12,6 +12,7 @@ export class StationService {
                 stations.push(res.data[prop])
             }
         })
+        stations.sort((a, b) => (a.name > b.name ? 1 : -1))
         return stations
-    } 
+    }
 }

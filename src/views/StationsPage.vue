@@ -1,7 +1,6 @@
 <template>
     <keep-alive>
         <div class="station-page">
-            <v-btn dark @click="xxx">Удали эту кнопку</v-btn>
             <stations-list :stations="getAllStations" />
         </div>
     </keep-alive>

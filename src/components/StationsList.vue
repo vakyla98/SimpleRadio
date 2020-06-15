@@ -32,7 +32,7 @@ export default {
 }
 .station-card_clickable {
     cursor: pointer;
-    width: 25%;
+    width: 30%;
     transition: 0.2s;
     &:hover {
         transform: translateY(-5px);
