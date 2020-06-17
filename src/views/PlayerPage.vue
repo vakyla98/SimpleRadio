@@ -69,6 +69,7 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../style/mixins.scss';
 .player-container {
     max-width: 480px;
 }
@@ -77,12 +78,15 @@ export default {
     border-radius: 10px;
     align-items: stretch;
     &__btn {
-        height: inherit !important;
+        height:initial !important;
         flex-grow: 1;
     }
     &__text {
         line-height: 32px;
         font-size: 14px;
+    }
+    @include screen(max, 480px) {
+        height:180px;
     }
 }
 </style>

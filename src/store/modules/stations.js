@@ -27,15 +27,13 @@ export default {
         getNextStation: state => curStation => {
             let curIndex = state.stations.indexOf(curStation)
             let nextIndex = curIndex + 1
-            if ( nextIndex > state.stations.length - 1) nextIndex = 0;
-            console.log(state.stations[nextIndex].route)
+            if (nextIndex > state.stations.length - 1) nextIndex = 0
             return state.stations[nextIndex]
         },
         getPrevStation: state => curStation => {
             let curIndex = state.stations.indexOf(curStation)
             let prevIndex = curIndex - 1
-            if( prevIndex < 0 ) prevIndex = state.stations.length - 1
-            console.log(state.stations[prevIndex].route)
+            if (prevIndex < 0) prevIndex = state.stations.length - 1
             return state.stations[prevIndex]
         },
     },

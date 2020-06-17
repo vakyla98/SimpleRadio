@@ -19,23 +19,26 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../style/mixins.scss';
 .station-card {
     display: flex;
     max-width: 180px;
-    min-width: 100px;
+    width: 100%;
+    height: 100%;
     font-size: 14px;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    &__img{
-        width:100%; 
+    &__img {
+        width: 100%;
     }
-}
-@media (max-width: 600px) {
-    .station-card {
+    @include screen(max, 600px) {
         font-size: 12px;
+    }
+    @include screen(max, 480px) {
+        max-width: 116px;
     }
 }
 </style>
