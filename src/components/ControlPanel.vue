@@ -6,7 +6,16 @@
             small
             color="orange"
             @click="toggleStateAudio"
-            ><v-icon v-if="isPlayed">mdi-pause</v-icon>
+        >
+            <v-progress-circular
+                v-if="isBuffering"
+                class="loading-overlay__spinner"
+                :size="20"
+                :width="2"
+                color="black"
+                indeterminate
+            ></v-progress-circular>
+            <v-icon v-else-if="isPlayed">mdi-pause</v-icon>
             <v-icon v-else>mdi-play</v-icon>
         </v-btn>
         <v-btn class="controls__btn" small color="orange" @click="runBack"
@@ -40,6 +49,7 @@ export default {
     data() {
         return {
             isPlayed: false,
+            isBuffering: false,
             isMuted: false,
             volume: '0.5',
             isCooldown: false,
@@ -47,15 +57,19 @@ export default {
     },
     methods: {
         toggleStateAudio() {
-            this.isPlayed ? this.stopAudio() : this.playAudio()
+            if (!this.isBuffering) {
+                this.isPlayed ? this.stopAudio() : this.playAudio()
+            }
         },
         stopAudio() {
             this.isPlayed = false
             this.$refs.currentAudio.pause()
         },
-        playAudio() {
+        async playAudio() {
+            this.isBuffering = true
+            await this.$refs.currentAudio.play()
+            this.isBuffering = false
             this.isPlayed = true
-            this.$refs.currentAudio.play()
         },
         async restartStream() {
             await this.$refs.currentAudio.load()
