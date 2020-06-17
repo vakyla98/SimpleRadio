@@ -20,7 +20,6 @@
             :isMuted="isMuted"
             @muteHandler="toggleMute"
             :volume.sync="volume"
-            @changeVolume="changeVolume"
         />
     </div>
 </template>
@@ -43,6 +42,7 @@ export default {
             isPlayed: false,
             isMuted: false,
             volume: '0.5',
+            isCooldown: false,
         }
     },
     methods: {
@@ -64,9 +64,6 @@ export default {
         runBack() {
             this.$refs.currentAudio.currentTime -= 10
         },
-        changeVolume(newVolume) {
-            this.volume = newVolume
-        },
         toggleMute() {
             this.isMuted = !this.isMuted
             if (this.isMuted === true) {
@@ -82,6 +79,14 @@ export default {
                 this.$refs.currentAudio.volume = 0
             } else {
                 this.$refs.currentAudio.volume = this.volume
+                if (!this.isCooldown) {
+                    //debounser to avoid multiple localStorage rewriting
+                    this.isCooldown = true
+                    setTimeout(() => {
+                        this.isCooldown = false
+                        localStorage.setItem('volume', this.volume)
+                    }, 1000)
+                }
             }
         },
         url() {
@@ -89,6 +94,12 @@ export default {
                 this.restartStream()
             }
         },
+    },
+    created() {
+        let volume = localStorage.getItem('volume')
+        if (volume !== null) {
+            this.volume = volume
+        }
     },
 }
 </script>
