@@ -31,6 +31,7 @@ export default {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
     &__img {
         width: 100%;
     }

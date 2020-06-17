@@ -77,16 +77,20 @@ export default {
     display: flex;
     border-radius: 10px;
     align-items: stretch;
+    height: 257px;
     &__btn {
-        height:initial !important;
+        height: initial !important;
         flex-grow: 1;
     }
     &__text {
         line-height: 32px;
         font-size: 14px;
     }
+    @include screen(max, 600px) {
+        height: 246px;
+    }
     @include screen(max, 480px) {
-        height:180px;
+        height: 180px;
     }
 }
 </style>
