@@ -1,14 +1,16 @@
 <template>
     <div class="volume-control">
-        <v-btn
+        <div
             class="volume-control__input-wrapper"
             small
             color="orange"
             :ripple="false"
         >
             <div class="volume-mute" @click="$emit('muteHandler')">
-                <v-icon class="mr-2" v-if="isMuted">mdi-volume-off</v-icon>
-                <v-icon class="mr-2" v-else>mdi-volume-high</v-icon>
+                <v-icon class="volume-icon mr-2" v-if="isMuted"
+                    >mdi-volume-off</v-icon
+                >
+                <v-icon class="volume-icon mr-2" v-else>mdi-volume-high</v-icon>
             </div>
             <input
                 class="volume-control__input"
@@ -20,7 +22,8 @@
                 max="1"
                 v-model="currentVolume"
                 step="0.01"
-        /></v-btn>
+            />
+        </div>
     </div>
 </template>
 <script>
@@ -56,7 +59,22 @@ export default {
     flex-grow: 1;
     // min-width: 250px;
     &__input-wrapper {
+        background-color: #ff9800;
+        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+            0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+            0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        height: 28px;
+        padding: 0 12px;
         width: 100%;
+    }
+    .volume-icon {
+        cursor: pointer;
+        &:hover {
+            color: black;
+        }
     }
 }
 input[type='range'] {
