@@ -22,16 +22,16 @@ export default {
 @import '../style/mixins.scss';
 .station-card {
     display: flex;
+    justify-content: flex-end;
     max-width: 180px;
     width: 100%;
     height: 100%;
     font-size: 14px;
     flex-direction: column;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-
     &__img {
         width: 100%;
     }

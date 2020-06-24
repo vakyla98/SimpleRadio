@@ -6,16 +6,9 @@
             small
             color="orange"
             @click="toggleStateAudio"
+            :loading="isBuffering"
         >
-            <v-progress-circular
-                v-if="isBuffering"
-                class="loading-overlay__spinner"
-                :size="20"
-                :width="2"
-                color="black"
-                indeterminate
-            ></v-progress-circular>
-            <v-icon v-else-if="isPlayed">mdi-pause</v-icon>
+            <v-icon v-if="isPlayed">mdi-pause</v-icon>
             <v-icon v-else>mdi-play</v-icon>
         </v-btn>
         <v-btn class="controls__btn" small color="orange" @click="runBack"

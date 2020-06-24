@@ -1,29 +1,28 @@
 <template>
     <keep-alive>
         <div class="station-page">
-            <stations-list :stations="getAllStations" />
+            <stations-list :stations="stations" />
         </div>
     </keep-alive>
 </template>
 
 <script>
 let x = 0
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import StationsList from '../components/StationsList.vue'
 export default {
     name: 'StationPage',
     components: { StationsList },
-    data() {
-        return {}
-    },
     methods: {
         xxx() {
-            x = this.getAllStations
+            x = this.stations
             console.log(x)
         },
     },
     computed: {
-        ...mapGetters(['getAllStations']),
+        ...mapState({
+            stations: state => state.stationsModule.stations,
+        }),
     },
 }
 </script>

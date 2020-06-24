@@ -1,6 +1,6 @@
 <template>
     <form class="container form-container">
-        <span>Current count stations: {{ getAllStations.length }} </span>
+        <span>Current count stations: {{ stations.length }} </span>
         <v-text-field
             v-model.trim="image"
             :error-messages="imageErrors"
@@ -42,12 +42,11 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, url } from 'vuelidate/lib/validators'
-import { mapActions, mapMutations, mapGetters } from 'vuex'
-import { db_Service } from '../services'
+import { mapActions, mapMutations, mapState } from 'vuex'
+import { stationService } from '../services'
 
 export default {
     mixins: [validationMixin],
-
     validations: {
         image: { required, url },
         name: { required },
@@ -63,7 +62,9 @@ export default {
     }),
 
     computed: {
-        ...mapGetters(['getAllStations']),
+        ...mapState({
+            stations: state => state.stationsModule.stations,
+        }),
         imageErrors() {
             const errors = []
             if (!this.$v.image.$dirty) return errors
@@ -106,7 +107,7 @@ export default {
                     route: this.route,
                     url: this.url,
                 }
-                await db_Service.addStation(data)
+                await stationService.addStation(data)
                 await this.fetchStations() //update storage
                 this.clear()
             }

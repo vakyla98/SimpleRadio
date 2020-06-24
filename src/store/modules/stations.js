@@ -18,9 +18,6 @@ export default {
         },
     },
     getters: {
-        getAllStations(state) {
-            return state.stations
-        },
         getStationByRoute: state => name => {
             return state.stations.find(station => station.route === name)
         },

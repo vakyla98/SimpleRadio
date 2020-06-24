@@ -7,10 +7,12 @@
             :ripple="false"
         >
             <div class="volume-mute" @click="$emit('muteHandler')">
-                <v-icon class="volume-icon mr-2" v-if="isMuted"
-                    >mdi-volume-off</v-icon
-                >
-                <v-icon class="volume-icon mr-2" v-else>mdi-volume-high</v-icon>
+                <v-icon class="volume-icon mr-2" v-if="isMuted">
+                    mdi-volume-off
+                </v-icon>
+                <v-icon class="volume-icon mr-2" v-else>
+                    mdi-volume-high
+                </v-icon>
             </div>
             <input
                 class="volume-control__input"
@@ -72,9 +74,8 @@ export default {
     }
     .volume-icon {
         cursor: pointer;
-        &:hover {
-            color: black;
-        }
+        color: black;
+
     }
 }
 input[type='range'] {
