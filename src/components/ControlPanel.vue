@@ -17,6 +17,7 @@
         <v-btn class="controls__btn" small color="orange" @click="restartStream"
             ><v-icon>mdi-reload</v-icon></v-btn
         >
+        <Timer />
         <input-range
             class=" controls__input-range"
             :isMuted="isMuted"
@@ -27,11 +28,14 @@
 </template>
 <script>
 import InputRange from './InputRange.vue'
+import Timer from './Timer.vue'
+import debounce from '../helpers/debounce.js'
 
 export default {
     name: 'ControlPanel',
     components: {
         InputRange,
+        Timer,
     },
     props: {
         url: {
@@ -45,7 +49,6 @@ export default {
             isBuffering: false,
             isMuted: false,
             volume: '0.5',
-            isCooldown: false,
         }
     },
     methods: {
@@ -79,6 +82,9 @@ export default {
                 this.$refs.currentAudio.volume = this.volume
             }
         },
+        saveVolume: debounce(volume => {
+            localStorage.setItem('volume', volume)
+        }, 1000),
     },
     watch: {
         volume() {
@@ -86,14 +92,7 @@ export default {
                 this.$refs.currentAudio.volume = 0
             } else {
                 this.$refs.currentAudio.volume = this.volume
-                if (!this.isCooldown) {
-                    //debounser to avoid multiple localStorage rewriting
-                    this.isCooldown = true
-                    setTimeout(() => {
-                        this.isCooldown = false
-                        localStorage.setItem('volume', this.volume)
-                    }, 1000)
-                }
+                this.saveVolume(this.volume)
             }
         },
         url() {
