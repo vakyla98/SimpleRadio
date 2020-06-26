@@ -17,7 +17,7 @@
         <v-btn class="controls__btn" small color="orange" @click="restartStream"
             ><v-icon>mdi-reload</v-icon></v-btn
         >
-        <Timer />
+        <!-- <Timer /> -->
         <input-range
             class=" controls__input-range"
             :isMuted="isMuted"
@@ -28,14 +28,14 @@
 </template>
 <script>
 import InputRange from './InputRange.vue'
-import Timer from './Timer.vue'
+// import Timer from './Timer.vue'
 import debounce from '../helpers/debounce.js'
 
 export default {
     name: 'ControlPanel',
     components: {
         InputRange,
-        Timer,
+        // Timer,
     },
     props: {
         url: {
