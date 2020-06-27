@@ -71,7 +71,7 @@ export default {
 <style lang="scss">
 @import '../style/mixins.scss';
 .player-container {
-    max-width: 480px;
+    max-width: 520px;
 }
 .player-info {
     display: flex;
