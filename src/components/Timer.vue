@@ -1,20 +1,21 @@
 <template>
-    <div class="timer control-wraper">
-        {{ time }}
-    </div>
+    <div class="timer control-wraper">{{ minutes }} : {{ seconds }}</div>
 </template>
 <script>
 export default {
     name: 'Timer',
-    data() {
-        return {
-            time: 0,
-        }
+    props: {
+        time: Number,
     },
-    methods: {},
-    watch: {},
-    created() {},
+    computed: {
+        minutes() {
+            let minuteCounter = Math.floor(this.time / 60)
+            return minuteCounter < 10 ? '0' + minuteCounter : minuteCounter
+        },
+        seconds() {
+            let secondCounter = this.time % 60
+            return secondCounter < 10 ? '0' + secondCounter : secondCounter
+        },
+    },
 }
 </script>
-
-<style lang="scss"></style>

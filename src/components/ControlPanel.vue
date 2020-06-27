@@ -17,7 +17,7 @@
         <v-btn class="controls__btn" small color="orange" @click="restartStream"
             ><v-icon>mdi-reload</v-icon></v-btn
         >
-        <!-- <Timer /> -->
+        <Timer :time="time" />
         <input-range
             class=" controls__input-range"
             :isMuted="isMuted"
@@ -28,14 +28,16 @@
 </template>
 <script>
 import InputRange from './InputRange.vue'
-// import Timer from './Timer.vue'
+import Timer from './Timer.vue'
 import debounce from '../helpers/debounce.js'
+
+let timeInterval
 
 export default {
     name: 'ControlPanel',
     components: {
         InputRange,
-        // Timer,
+        Timer,
     },
     props: {
         url: {
@@ -48,6 +50,7 @@ export default {
             isPlayed: false,
             isBuffering: false,
             isMuted: false,
+            time: 0,
             volume: '0.5',
         }
     },
@@ -57,21 +60,24 @@ export default {
                 this.isPlayed ? this.stopAudio() : this.playAudio()
             }
         },
-        stopAudio() {
-            this.isPlayed = false
-            this.$refs.currentAudio.pause()
-        },
         async playAudio() {
             this.isBuffering = true
             await this.$refs.currentAudio.play()
             this.isBuffering = false
             this.isPlayed = true
         },
+        stopAudio() {
+            this.isPlayed = false
+            this.$refs.currentAudio.pause()
+        },
         async restartStream() {
+            this.isPlayed = false
+            this.time = 0
             await this.$refs.currentAudio.load()
             this.playAudio()
         },
         runBack() {
+            this.time < 10 ? (this.time = 0) : (this.time -= 10)
             this.$refs.currentAudio.currentTime -= 10
         },
         toggleMute() {
@@ -96,6 +102,7 @@ export default {
             }
         },
         url() {
+            this.time = 0
             if (this.isPlayed) {
                 this.restartStream()
             }
@@ -106,6 +113,12 @@ export default {
         if (volume !== null) {
             this.volume = volume
         }
+        timeInterval = setInterval(() => {
+            if (this.isPlayed) this.time++
+        }, 1000)
+    },
+    beforeDestroy() {
+        clearInterval(timeInterval)
     },
 }
 </script>

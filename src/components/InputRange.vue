@@ -1,26 +1,24 @@
 <template>
-    <div class="volume-control">
-        <div class="control-wraper">
-            <div class="volume-mute" @click="$emit('muteHandler')">
-                <v-icon class="volume-icon mr-2" v-if="isMuted">
-                    mdi-volume-off
-                </v-icon>
-                <v-icon class="volume-icon mr-2" v-else>
-                    mdi-volume-high
-                </v-icon>
-            </div>
-            <input
-                class="volume-control__input"
-                ref="volumeInput"
-                type="range"
-                id="volume"
-                name="volume"
-                min="0"
-                max="1"
-                v-model="currentVolume"
-                step="0.01"
-            />
+    <div class="volume-control control-wraper">
+        <div class="volume-mute" @click="$emit('muteHandler')">
+            <v-icon class="volume-icon mr-2" v-if="isMuted">
+                mdi-volume-off
+            </v-icon>
+            <v-icon class="volume-icon mr-2" v-else>
+                mdi-volume-high
+            </v-icon>
         </div>
+        <input
+            class="volume-control__input"
+            ref="volumeInput"
+            type="range"
+            id="volume"
+            name="volume"
+            min="0"
+            max="1"
+            v-model="currentVolume"
+            step="0.01"
+        />
     </div>
 </template>
 <script>
