@@ -2,4 +2,7 @@ UX - unmute when volume changing
 
 --------------------------------
 
-UX - Keyboard listening
+
+BG - dblclick on change station makes infinite loading
+
+UP - keyboard component emits event at all entrypoints

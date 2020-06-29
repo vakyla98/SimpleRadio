@@ -27,11 +27,14 @@
             </v-btn>
         </div>
         <Player :station="station" />
+        <keyboard-events @keyup="keyboardEvent" />
     </div>
 </template>
 <script>
 import Player from '../components/Player.vue'
 import StationCard from '../components/StationCard'
+import KeyboardEvents from '../components/KeyboardEvents.vue'
+
 import { mapGetters } from 'vuex'
 
 export default {
@@ -39,6 +42,7 @@ export default {
     components: {
         Player,
         StationCard,
+        KeyboardEvents,
     },
     data() {
         return {
@@ -47,13 +51,21 @@ export default {
         }
     },
     methods: {
-        changeStation(dir) {
-            dir === 'next'
-                ? (this.station = this.getNextStation(this.station))
-                : (this.station = this.getPrevStation(this.station))
+        nextStation() {
+            this.station = this.getNextStation(this.station)
+        },
+        prevStation() {
+            this.station = this.getPrevStation(this.station)
+        },
+        changeStation(direction) {
+            direction === 'next' ? this.nextStation() : this.prevStation()
             this.$router.push({
                 path: `/player/${this.station.route}`,
             })
+        },
+        keyboardEvent(e) {
+            if (e.code === 'ArrowLeft') this.nextStation()
+            if (e.code === 'ArrowRight') this.prevStation()
         },
     },
     beforeMount() {

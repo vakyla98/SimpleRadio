@@ -23,7 +23,7 @@
 </template>
 <script>
 export default {
-    name: 'InputRange',
+    name: 'VolumeRange',
     props: {
         isMuted: {
             type: Boolean,

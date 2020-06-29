@@ -18,17 +18,19 @@
             ><v-icon>mdi-reload</v-icon></v-btn
         >
         <Timer :time="time" />
-        <input-range
+        <volume-range
             class=" controls__input-range"
             :isMuted="isMuted"
             @muteHandler="toggleMute"
             :volume.sync="volume"
         />
+        <keyboard-events @keyup="keyboardEvent" />
     </div>
 </template>
 <script>
-import InputRange from './InputRange.vue'
+import VolumeRange from './VolumeRange.vue'
 import Timer from './Timer.vue'
+import KeyboardEvents from './KeyboardEvents.vue'
 import debounce from '../helpers/debounce.js'
 
 let timeInterval
@@ -36,8 +38,9 @@ let timeInterval
 export default {
     name: 'ControlPanel',
     components: {
-        InputRange,
+        VolumeRange,
         Timer,
+        KeyboardEvents,
     },
     props: {
         url: {
@@ -94,6 +97,27 @@ export default {
         saveVolume: debounce(volume => {
             localStorage.setItem('volume', volume)
         }, 1000),
+        keyboardEvent(e) {
+            if (e.code === 'Space') {
+                this.toggleStateAudio()
+            }
+            if (e.code === 'Backspace') {
+                this.runBack()
+            }
+            if (e.code === 'ArrowUp') {
+                e.preventDefault()
+                this.volume > 0.9
+                    ? (this.volume = '1')
+                    : (this.volume = +this.volume + 0.1 + '')
+            }
+            if (e.code === 'ArrowDown') {
+                e.preventDefault()
+                this.volume < 0.1
+                    ? (this.volume = '0')
+                    : (this.volume = +this.volume - 0.1 + '')
+            }
+            //input range work only with string, '' faster than toSting()
+        },
     },
     watch: {
         volume() {
@@ -116,13 +140,8 @@ export default {
         timeInterval = setInterval(() => {
             if (this.isPlayed) this.time++
         }, 1000)
-        // this.listenSpace = function(e) {
-        //     if (e.code === 'Space') this.toggleStateAudio()
-        // }
-        // window.addEventListener('keyup', this.listenSpace)
     },
     beforeDestroy() {
-        // window.removeEventListener('keyup', this.listenSpace)
         clearInterval(timeInterval)
     },
 }
