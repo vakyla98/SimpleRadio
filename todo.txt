@@ -1,8 +1,12 @@
-UX - unmute when volume changing
+CE - Custom error | 
+BG - bug | UX - User exp | UP - upgrade  
 
+
+UX - unmute when volume changing
+BG[1] - dblclick on change station makes infinite loading 
 --------------------------------
 
 
-BG - dblclick on change station makes infinite loading
+
 
 UP - keyboard component emits event at all entrypoints

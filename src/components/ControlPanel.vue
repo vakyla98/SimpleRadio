@@ -65,16 +65,21 @@ export default {
         },
         async playAudio() {
             this.isBuffering = true
-            await this.$refs.currentAudio.play()
-            this.isBuffering = false
-            this.isPlayed = true
+            try {
+                await this.$refs.currentAudio.play()
+                this.isBuffering = false
+                this.isPlayed = true
+            } catch {
+                this.isBuffering = false
+                this.isPlayed = false
+                console.warn('[CE]-[Too ofter play reques]')
+            }
         },
         stopAudio() {
             this.isPlayed = false
             this.$refs.currentAudio.pause()
         },
         async restartStream() {
-            this.isPlayed = false
             this.time = 0
             await this.$refs.currentAudio.load()
             this.playAudio()
@@ -128,6 +133,7 @@ export default {
         url() {
             this.time = 0
             if (this.isPlayed) {
+                this.stopAudio()
                 this.restartStream()
             }
         },
