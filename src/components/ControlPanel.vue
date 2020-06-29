@@ -80,13 +80,16 @@ export default {
             this.time < 10 ? (this.time = 0) : (this.time -= 10)
             this.$refs.currentAudio.currentTime -= 10
         },
+        mute() {
+            this.isMuted = true
+            this.$refs.currentAudio.muted = true
+        },
+        unmute() {
+            this.isMuted = false
+            this.$refs.currentAudio.muted = false
+        },
         toggleMute() {
-            this.isMuted = !this.isMuted
-            if (this.isMuted === true) {
-                this.$refs.currentAudio.volume = 0
-            } else {
-                this.$refs.currentAudio.volume = this.volume
-            }
+            this.isMuted === true ? this.unmute() : this.mute()
         },
         saveVolume: debounce(volume => {
             localStorage.setItem('volume', volume)
@@ -94,12 +97,9 @@ export default {
     },
     watch: {
         volume() {
-            if (this.isMuted === true) {
-                this.$refs.currentAudio.volume = 0
-            } else {
-                this.$refs.currentAudio.volume = this.volume
-                this.saveVolume(this.volume)
-            }
+            this.unmute()
+            this.$refs.currentAudio.volume = this.volume
+            this.saveVolume(this.volume)
         },
         url() {
             this.time = 0
@@ -116,8 +116,13 @@ export default {
         timeInterval = setInterval(() => {
             if (this.isPlayed) this.time++
         }, 1000)
+        // this.listenSpace = function(e) {
+        //     if (e.code === 'Space') this.toggleStateAudio()
+        // }
+        // window.addEventListener('keyup', this.listenSpace)
     },
     beforeDestroy() {
+        // window.removeEventListener('keyup', this.listenSpace)
         clearInterval(timeInterval)
     },
 }

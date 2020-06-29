@@ -1,2 +1,5 @@
-Create cookie for volume in InputRange
-Timer
+UX - unmute when volume changing
+
+--------------------------------
+
+UX - Keyboard listening
