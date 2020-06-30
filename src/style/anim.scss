@@ -1,33 +1,33 @@
 .fade {
     &-move {
-      transition: transform 0.5s;
+        transition: transform 0.5s;
     }
     &-enter-active {
-      transition: opacity 0.5s;
+        transition: opacity 0.5s;
     }
     &-leave-active {
-      transition: opacity 0.5s;
+        transition: opacity 0.5s;
     }
     &-enter,
     &-leave-to {
-      opacity: 0;
+        opacity: 0;
     }
-  }
-  .fade-fast {
+}
+.fade-fast {
     &-move {
-      transition: transform 0.2s;
+        transition: transform 0.2s;
     }
     &-enter-active {
-      transition: opacity 0.2s;
+        transition: opacity 0.2s;
     }
     &-leave-active {
-      transition: opacity 0.2s;
+        transition: opacity 0.2s;
     }
     &-enter,
     &-leave-to {
-      opacity: 0;
+        opacity: 0;
     }
-  }
+}
 
 .time {
     &-leave-active,
@@ -42,4 +42,15 @@
         opacity: 0;
         transform: translateY(5px);
     }
+}
+
+.card{
+    //card must have 'transition:all'
+    &-list-leave-active {
+        position: absolute;
+    }
+    &-list-enter,
+    &-list-leave-to {
+        opacity: 0;
+    } 
 }

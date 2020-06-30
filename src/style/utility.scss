@@ -18,3 +18,14 @@
         rgba(204, 203, 219, 1) 100%
     );
 }
+.input {
+    border: 1px solid gray;
+    line-height: 28px;
+    border-radius: 3px;
+    padding: 0 8px;
+    outline-color: #f9a825;
+    @include screen(max, 480px) {
+        font-size: 12px;
+        line-height: 22px;
+    }
+}

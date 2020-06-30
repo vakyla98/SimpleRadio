@@ -1,8 +1,24 @@
 <template>
     <keep-alive>
         <div class="station-page container">
-            <input type="text" class="input" v-model="searchText" />
-            <stations-list :stations="filteredStations" />
+            <input
+                type="text"
+                class="station-page__search input "
+                v-model="searchText"
+                placeholder="Station name"
+            />
+            <transition name="fade-fast" mode="out-in">
+                <stations-list
+                    :stations="filteredStations"
+                    v-if="filteredStations.length"
+                />
+                <p
+                    v-else
+                    class="station-page__describer station-page__describer_not-found"
+                >
+                    Any station with this name :(
+                </p>
+            </transition>
         </div>
     </keep-alive>
 </template>
@@ -23,16 +39,11 @@ export default {
             stations: state => state.stationsModule.stations,
         }),
         filteredStations() {
-            return this.stations.filter(el => el.name.includes(this.searchText))
+            return this.stations.filter(el =>
+                el.name.toLowerCase().includes(this.searchText.toLowerCase())
+            )
         },
     },
 }
 </script>
-<style lang="scss">
-.input {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    background-color: green;
-}
-</style>
+<style lang="scss"></style>

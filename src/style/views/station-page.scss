@@ -1,0 +1,30 @@
+// .station-page {
+//     display: flex;
+//     flex-direction: column;
+//     &__search {
+//         display: block;
+//         width: 100%;
+//         max-width: 320px;
+//         margin: 0 auto 20px;
+//         @include screen(max, 480px) {
+//             margin-bottom: 10px;
+//         }
+//     }
+//     &__describer {
+//         margin: 0 auto;
+//     }
+// }
+.station-page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &__search {
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 20px;
+        @include screen(max, 480px) {
+            margin-bottom: 10px;
+        }
+    }
+}

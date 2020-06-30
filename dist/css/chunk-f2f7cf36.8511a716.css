@@ -1,0 +1,1 @@
+.station-list{display:flex;justify-content:center;flex-wrap:wrap}.station-card_clickable{cursor:pointer;transition:all .5s ease-in-out,box-shadow .1s}.station-card_clickable:hover{box-shadow:0 14px 28px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.5)}
