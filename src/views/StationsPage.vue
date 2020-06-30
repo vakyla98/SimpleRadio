@@ -1,6 +1,6 @@
 <template>
     <keep-alive>
-        <div class="station-page">
+        <div class="station-page container">
             <stations-list :stations="stations" />
         </div>
     </keep-alive>

@@ -9,7 +9,7 @@ export default function debounce(f, ms) {
         isCooldown = true
 
         setTimeout(() => {
-            f.apply(this, curentArgs)
+            f.apply(this,curentArgs)
             isCooldown = false
         }, ms)
     }

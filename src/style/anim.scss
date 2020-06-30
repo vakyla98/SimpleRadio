@@ -15,13 +15,13 @@
 
 .move-leave-active,
 .move-enter-active {
-    transition: all 0.1s;
+    transition: all 0.2s;
 }
 .move-enter {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 .move-leave-to {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(5px);
 }
