@@ -1,6 +1,6 @@
 <template>
     <div class="timer control-wraper">
-        <transition name="move" mode="out-in">
+        <transition name="time" mode="out-in">
             <span class="timer__minutes" v-text="minutes" :key="minutes" />
         </transition>
         <span class="colon"> : </span>

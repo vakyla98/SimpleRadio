@@ -1,13 +1,13 @@
 <template>
-    <div class="station-list">
+    <transition-group name="xxx" tag="div" class="station-list">
         <station-card
             class="station-card_clickable ma-1 ma-sm-3"
             v-for="station in stations"
-            :station="station"
             :key="station.name"
+            :station="station"
             @click.native="$router.push({ path: `/player/${station.route}` })"
         />
-    </div>
+    </transition-group>
 </template>
 <script>
 import StationCard from './StationCard'
@@ -25,6 +25,20 @@ export default {
 }
 </script>
 <style lang="scss">
+.xxx-move {
+    transition: all 1s;
+}
+.xxx-enter-active {
+    transition: all 1s;
+}
+.xxx-leave-active {
+    transition: all 1s;
+    position: absolute;
+}
+.xxx-enter,
+.xxx-leave-to {
+    opacity: 0;
+}
 .station-list {
     display: flex;
     justify-content: center;
@@ -33,7 +47,8 @@ export default {
 .station-card_clickable {
     cursor: pointer;
     width: 30%;
-    transition: 0.2s;
+    // transition: transform 0.2s, box-shadow 0.2s;
+    // transition: all 1s ease-in-out;
     &:hover {
         transform: translateY(-1px);
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
