@@ -1,5 +1,11 @@
 <template>
-    <div class="timer control-wraper">{{ minutes }} : {{ seconds }}</div>
+    <div class="timer control-wraper">
+        <transition name="move" mode="out-in">
+            <span class="timer__minutes" v-text="minutes" :key="minutes" />
+        </transition>
+        <span class="colon"> : </span>
+        <span class="timer__seconds" v-text="seconds" :key="seconds" />
+    </div>
 </template>
 <script>
 export default {
@@ -19,3 +25,8 @@ export default {
     },
 }
 </script>
+<style lang="scss">
+.colon {
+    white-space: pre;
+}
+</style>

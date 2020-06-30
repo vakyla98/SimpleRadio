@@ -30,20 +30,4 @@ export default {
     },
 }
 </script>
-<style lang="scss">
 
-.fade-move {
-    transition: transform 0.2s;
-}
-.fade-enter-active {
-    transition: opacity 0.5s;
-}
-.fade-leave-active {
-    transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-    opacity: 0;
-}
-
-</style>
