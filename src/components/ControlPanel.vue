@@ -24,14 +24,13 @@
             @muteHandler="toggleMute"
             :volume.sync="volume"
         />
-        <keyboard-events @keyup="keyboardEvent" />
     </div>
 </template>
 <script>
 import VolumeRange from './VolumeRange.vue'
 import Timer from './Timer.vue'
-import KeyboardEvents from './KeyboardEvents.vue'
 import debounce from '../helpers/debounce.js'
+import { mapState } from 'vuex'
 
 let timeInterval
 
@@ -40,7 +39,6 @@ export default {
     components: {
         VolumeRange,
         Timer,
-        KeyboardEvents,
     },
     props: {
         url: {
@@ -102,29 +100,35 @@ export default {
         saveVolume: debounce(volume => {
             localStorage.setItem('volume', volume)
         }, 1000),
-        keyboardEvent(e) {
-            if (e.code === 'Space') {
-                this.toggleStateAudio()
-            }
-            if (e.code === 'Backspace') {
-                this.runBack()
-            }
-            if (e.code === 'ArrowUp') {
-                e.preventDefault()
-                this.volume > 0.9
-                    ? (this.volume = '1')
-                    : (this.volume = +this.volume + 0.1 + '')
-            }
-            if (e.code === 'ArrowDown') {
-                e.preventDefault()
-                this.volume < 0.1
-                    ? (this.volume = '0')
-                    : (this.volume = +this.volume - 0.1 + '')
-            }
-            //input range work only with string, '' faster than toSting()
-        },
+    },
+    computed: {
+        ...mapState({
+            keys: state => state.keyboardModule.keys,
+        }),
     },
     watch: {
+        keys: {
+            deep: true,
+            handler() {
+                if (this.keys['Space']) {
+                    this.toggleStateAudio()
+                }
+                if (this.keys['Backspace']) {
+                    this.runBack()
+                }
+                if (this.keys['ArrowUp']) {
+                    this.volume > 0.9
+                        ? (this.volume = '1')
+                        : (this.volume = +this.volume + 0.1 + '')
+                }
+                if (this.keys['ArrowDown']) {
+                    this.volume < 0.1
+                        ? (this.volume = '0')
+                        : (this.volume = +this.volume - 0.1 + '')
+                }
+                //input range work only with string, '' faster than toSting()
+            },
+        },
         volume() {
             this.unmute()
             this.$refs.currentAudio.volume = this.volume

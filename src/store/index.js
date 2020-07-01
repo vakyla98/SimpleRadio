@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import userModule from './modules/user'
+import keyboardModule from './modules/keyboard'
 import stationsModule from './modules/stations'
 
 Vue.use(Vuex)
@@ -21,6 +22,7 @@ export default new Vuex.Store({
   },
   modules: {
     userModule,
+    keyboardModule,
     stationsModule
   }
 })

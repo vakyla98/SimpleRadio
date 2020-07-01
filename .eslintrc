@@ -8,6 +8,7 @@
         "parser": "babel-eslint"
     },
     "rules": {
-        "no-console": ["warn", { "allow": ["warn", "error"] }]
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "no-prototype-builtins": 0
     }
 }
