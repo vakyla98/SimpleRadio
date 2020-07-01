@@ -7,7 +7,6 @@ import '@babel/polyfill'
 import vuetify from './plugins/vuetify'
 import Vuelidate from 'vuelidate'
 
-
 import store from './store'
 import router from './router'
 
@@ -20,3 +19,5 @@ new Vue({
     Vuelidate,
     render: h => h(App),
 }).$mount('#app')
+
+  

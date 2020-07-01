@@ -27,7 +27,7 @@
             </v-btn>
         </div>
         <Player :station="station" />
-        <keyboard-events @keyup="keyboardEvent" />
+        <keyboard-events/>
     </div>
 </template>
 <script>
@@ -35,7 +35,7 @@ import Player from '../components/Player.vue'
 import StationCard from '../components/StationCard'
 import KeyboardEvents from '../components/KeyboardEvents.vue'
 
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex' 
 
 export default {
     name: 'PlayerPage',
@@ -62,10 +62,6 @@ export default {
             this.$router.push({
                 path: `/player/${this.station.route}`,
             })
-        },
-        keyboardEvent(e) {
-            if (e.code === 'ArrowLeft') this.nextStation()
-            if (e.code === 'ArrowRight') this.prevStation()
         },
     },
     beforeMount() {
