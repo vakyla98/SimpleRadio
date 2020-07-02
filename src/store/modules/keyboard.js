@@ -3,6 +3,10 @@ export default {
         keys: {
             Space: false,
             Backspace: false,
+            ArrowLeft: false,
+            ArrowRight: false,
+            ArrowUp: false,
+            ArrowDown: false,
         },
     },
     mutations: {

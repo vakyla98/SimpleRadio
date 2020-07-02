@@ -2,13 +2,13 @@ CE - Custom error |
 BG - bug | UX - User exp | UP - upgrade  
 
 UX - unmute when volume changing
+
+UP - station search
+
 BG[1] - dblclick on change station makes infinite loading 
+BG[2] - keyboard component emits event at all entrypoints
+
 --------------------------------
-UP - keyboard component emits event at all entrypoints
-UP - login and favourite
 UP - filtering
-
-
-
-
-
+UP - login and favourite
+UP - autocomplete station search

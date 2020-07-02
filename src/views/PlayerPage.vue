@@ -27,7 +27,14 @@
             </v-btn>
         </div>
         <Player :station="station" />
-        <keyboard-events/>
+        <keyboard-events
+            :preventedKeys="[
+                'ArrowDown',
+                'ArrowUp',
+                'ArrowLeft',
+                'ArrowRight',
+            ]"
+        />
     </div>
 </template>
 <script>
@@ -35,7 +42,7 @@ import Player from '../components/Player.vue'
 import StationCard from '../components/StationCard'
 import KeyboardEvents from '../components/KeyboardEvents.vue'
 
-import { mapGetters } from 'vuex' 
+import { mapGetters, mapState } from 'vuex'
 
 export default {
     name: 'PlayerPage',
@@ -68,11 +75,23 @@ export default {
         this.station = this.getStationByRoute(this.stationRoute)
     },
     computed: {
+        ...mapState({
+            keys: state => state.keyboardModule.keys,
+        }),
         ...mapGetters([
             'getStationByRoute',
             'getPrevStation',
             'getNextStation',
         ]),
+    },
+    watch: {
+        keys: {
+            deep: true,
+            handler() {
+                if (this.keys['ArrowLeft']) this.changeStation('prev')
+                if (this.keys['ArrowRight']) this.changeStation('next')
+            },
+        },
     },
 }
 </script>

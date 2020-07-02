@@ -107,6 +107,18 @@ export default {
         }),
     },
     watch: {
+        volume() {
+            this.unmute()
+            this.$refs.currentAudio.volume = this.volume
+            this.saveVolume(this.volume)
+        },
+        url() {
+            this.time = 0
+            if (this.isPlayed) {
+                this.stopAudio()
+                this.restartStream()
+            }
+        },
         keys: {
             deep: true,
             handler() {
@@ -128,18 +140,6 @@ export default {
                 }
                 //input range work only with string, '' faster than toSting()
             },
-        },
-        volume() {
-            this.unmute()
-            this.$refs.currentAudio.volume = this.volume
-            this.saveVolume(this.volume)
-        },
-        url() {
-            this.time = 0
-            if (this.isPlayed) {
-                this.stopAudio()
-                this.restartStream()
-            }
         },
     },
     created() {
