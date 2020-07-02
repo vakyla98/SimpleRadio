@@ -8,14 +8,14 @@
             @click="toggleStateAudio"
             :loading="isBuffering"
         >
-            <v-icon v-if="isPlayed">mdi-pause</v-icon>
-            <v-icon v-else>mdi-play</v-icon>
+            <v-icon v-if="isPlayed">{{ icons.pause }}</v-icon>
+            <v-icon v-else>{{ icons.play }}</v-icon>
         </v-btn>
         <v-btn class="controls__btn" small color="orange" @click="runBack"
-            ><v-icon>mdi-rewind-10</v-icon>
+            ><v-icon>{{ icons.rewind }}</v-icon>
         </v-btn>
         <v-btn class="controls__btn" small color="orange" @click="restartStream"
-            ><v-icon>mdi-reload</v-icon></v-btn
+            ><v-icon>{{ icons.reload }}</v-icon></v-btn
         >
         <Timer :time="time" />
         <volume-range
@@ -31,6 +31,8 @@ import VolumeRange from './VolumeRange.vue'
 import Timer from './Timer.vue'
 import debounce from '../helpers/debounce.js'
 import { mapState } from 'vuex'
+
+import { mdiPlay, mdiPause, mdiReload, mdiRewind10 } from '@mdi/js'
 
 let timeInterval
 
@@ -53,6 +55,12 @@ export default {
             isMuted: false,
             time: 0,
             volume: '0.5',
+            icons: {
+                play: mdiPlay,
+                pause: mdiPause,
+                reload: mdiReload,
+                rewind: mdiRewind10,
+            },
         }
     },
     methods: {

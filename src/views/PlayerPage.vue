@@ -7,7 +7,7 @@
                 color="orange"
                 @click="changeStation('prev')"
             >
-                <v-icon>mdi-menu-left</v-icon>
+                <v-icon>{{ icons.arrowLeft }}</v-icon>
             </v-btn>
             <transition name="fade" mode="out-in">
                 <station-card
@@ -23,17 +23,12 @@
                 color="orange"
                 @click="changeStation('next')"
             >
-                <v-icon>mdi-menu-right</v-icon>
+                <v-icon>{{ icons.arrowRight }}</v-icon>
             </v-btn>
         </div>
         <Player :station="station" />
         <keyboard-events
-            :preventedKeys="[
-                'ArrowDown',
-                'ArrowUp',
-                'ArrowLeft',
-                'ArrowRight',
-            ]"
+            :preventedKeys="['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight']"
         />
     </div>
 </template>
@@ -43,6 +38,8 @@ import StationCard from '../components/StationCard'
 import KeyboardEvents from '../components/KeyboardEvents.vue'
 
 import { mapGetters, mapState } from 'vuex'
+
+import { mdiMenuRight, mdiMenuLeft } from '@mdi/js'
 
 export default {
     name: 'PlayerPage',
@@ -55,6 +52,10 @@ export default {
         return {
             stationRoute: this.$route.params.stationRoute,
             station: {},
+            icons: {
+                arrowLeft: mdiMenuLeft,
+                arrowRight: mdiMenuRight,
+            },
         }
     },
     methods: {
