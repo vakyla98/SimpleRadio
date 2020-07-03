@@ -11,12 +11,12 @@ export default {
     },
     mutations: {
         keyPressed(state, key) {
-            if (state.keys.hasOwnProperty(key)) {
+            if (state.keys[key] !== undefined) {
                 state.keys[key] = true
             }
         },
         keyUnpressed(state, key) {
-            if (state.keys.hasOwnProperty(key)) {
+            if (state.keys[key] !== undefined) {
                 state.keys[key] = false
             }
         },

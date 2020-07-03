@@ -28,7 +28,13 @@
         </div>
         <Player :station="station" />
         <keyboard-events
-            :preventedKeys="['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight']"
+            :preventedKeys="[
+                'Space',
+                'ArrowDown',
+                'ArrowUp',
+                'ArrowLeft',
+                'ArrowRight',
+            ]"
         />
     </div>
 </template>
