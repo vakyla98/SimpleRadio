@@ -1,6 +1,8 @@
 <template>
     <div class="player-page d-flex player-container container flex-column">
-        <div class="player-info pa-5 mb-5 mt-2 mt-sm-5 shadow main-grad">
+        <div
+            class="player-info pa-3 pa-sm-5 mb-5 mt-2 mt-sm-5 shadow main-grad"
+        >
             <v-btn
                 small
                 class="player-info__btn"
@@ -13,7 +15,7 @@
                 <station-card
                     :station="station"
                     :key="station.name"
-                    class="mx-5"
+                    class="mx-3 mx-sm-5"
                 />
             </transition>
 
@@ -113,6 +115,7 @@ export default {
     align-items: stretch;
     height: 257px;
     &__btn {
+        border-radius: 10px;
         height: initial !important;
         flex-grow: 1;
     }
