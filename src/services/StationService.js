@@ -8,7 +8,7 @@ export class StationService {
     }
     async getAllStations() {
         let stations = []
-        //request give not an array of objects, so we structure the data as we need
+        //request gives not an array of objects, so we structure the data as we need
         await axios.get(this.full_http).then(res => {
             for (let prop in res.data) {
                 stations.push(res.data[prop])
@@ -19,7 +19,7 @@ export class StationService {
     }
     async addStation(data) {
         let id = store.state.stationsModule.stations.length
-        await axios.post(this.http + '/' + id + '.json', 0)
+        await axios.post(this.http + '/' + id + '.json', 'placeholder')
         //firebase generate a key to my data, so I create a station with my id,
         //and after that rewrite data with put request, for deleting this key
         await this.editStation(id, data)

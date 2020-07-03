@@ -36,6 +36,7 @@ import { mdiPlay, mdiPause, mdiReload, mdiRewind10 } from '@mdi/js'
 
 let timeInterval
 
+
 export default {
     name: 'ControlPanel',
     components: {
@@ -78,7 +79,7 @@ export default {
             } catch {
                 this.isBuffering = false
                 this.isPlayed = false
-                console.warn('[CE]-[Too ofter play reques]')
+                console.warn('[CE]-[Too often play requests]')
             }
         },
         stopAudio() {
