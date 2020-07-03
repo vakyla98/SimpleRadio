@@ -2,10 +2,10 @@
     <div class="volume-control control-wraper">
         <div class="volume-mute" @click="$emit('muteHandler')">
             <v-icon class="volume-icon mr-2" v-if="isMuted">
-                mdi-volume-off
+                {{ icons.volumeOff }}
             </v-icon>
             <v-icon class="volume-icon mr-2" v-else>
-                mdi-volume-high
+                {{ icons.volumeOn }}
             </v-icon>
         </div>
         <input
@@ -22,6 +22,8 @@
     </div>
 </template>
 <script>
+import { mdiVolumeOff, mdiVolumeHigh } from '@mdi/js'
+
 export default {
     name: 'VolumeRange',
     props: {
@@ -34,7 +36,14 @@ export default {
             required: true,
         },
     },
-    methods: {},
+    data() {
+        return {
+            icons: {
+                volumeOff: mdiVolumeOff,
+                volumeOn: mdiVolumeHigh,
+            },
+        }
+    },
     computed: {
         currentVolume: {
             get() {
