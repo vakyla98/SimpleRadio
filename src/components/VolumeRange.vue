@@ -1,6 +1,6 @@
 <template>
     <div class="volume-control control-wraper">
-        <div class="volume-mute" @click="$emit('muteHandler')">
+        <div class="volume-mute" @click="$emit('toggleMute')">
             <v-icon class="volume-icon mr-2" v-if="isMuted">
                 {{ icons.volumeOff }}
             </v-icon>
@@ -22,6 +22,7 @@
     </div>
 </template>
 <script>
+
 import { mdiVolumeOff, mdiVolumeHigh } from '@mdi/js'
 
 export default {
@@ -69,25 +70,5 @@ export default {
     .control-wraper {
         flex-grow: 1;
     }
-}
-
-input[type='range'] {
-    height: 16px;
-    width: 100%;
-    padding: 0 2px;
-    border: 2px solid black;
-    border-radius: 8px;
-    cursor: pointer;
-    outline: none;
-    overflow: hidden;
-    -webkit-appearance: none;
-    background-color: $orange;
-}
-input[type='range']::-webkit-slider-thumb {
-    width: 10px;
-    -webkit-appearance: none;
-    height: 10px;
-    border-radius: 5px;
-    background: black;
 }
 </style>

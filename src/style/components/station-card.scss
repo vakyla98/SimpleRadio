@@ -1,7 +1,5 @@
 .station-card {
     display: flex;
-    max-width: 180px;
-    width: 100%;
     font-size: 14px;
     flex-direction: column;
     align-items: center;
@@ -24,6 +22,7 @@
         }
     }
     @include screen(max, 480px) {
-        max-width: 116px;
+        margin: 0 auto;
+        max-width: 120px;
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <transition-group name="card-list" tag="div" class="station-list">
         <station-card
-            class="station-card_clickable ma-1 ma-sm-3"
+            class="station-card_clickable"
             v-for="station in stations"
             :key="station.name"
             :station="station"
@@ -25,10 +25,15 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../style/mixins.scss';
 .station-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    @include screen(max, 480px) {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    grid-gap: 10px;
 }
 .station-card_clickable {
     cursor: pointer;

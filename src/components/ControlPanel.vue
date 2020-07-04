@@ -11,7 +11,7 @@
             <v-icon v-if="isPlayed">{{ icons.pause }}</v-icon>
             <v-icon v-else>{{ icons.play }}</v-icon>
         </v-btn>
-        <v-btn class="controls__btn" small color="orange" @click="runBack"
+        <v-btn class="controls__btn" small color="orange" @click="rewind"
             ><v-icon>{{ icons.rewind }}</v-icon>
         </v-btn>
         <v-btn class="controls__btn" small color="orange" @click="restartStream"
@@ -21,7 +21,7 @@
         <volume-range
             class=" controls__input-range"
             :isMuted="isMuted"
-            @muteHandler="toggleMute"
+            @toggleMute="toggleMute"
             :volume.sync="volume"
         />
     </div>
@@ -91,7 +91,7 @@ export default {
             await this.$refs.currentAudio.load()
             this.playAudio()
         },
-        runBack() {
+        rewind() {
             this.time < 10 ? (this.time = 0) : (this.time -= 10)
             this.$refs.currentAudio.currentTime -= 10
         },
@@ -135,7 +135,7 @@ export default {
                     this.toggleStateAudio()
                 }
                 if (this.keys['Backspace']) {
-                    this.runBack()
+                    this.rewind()
                 }
                 if (this.keys['ArrowUp']) {
                     this.volume > 0.9
