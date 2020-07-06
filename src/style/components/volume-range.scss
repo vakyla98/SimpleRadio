@@ -1,0 +1,11 @@
+.volume-control {
+    display: flex;
+    flex-grow: 1;
+    .volume-icon {
+        cursor: pointer;
+        color: black;
+    }
+    .control-wraper {
+        flex-grow: 1;
+    }
+}

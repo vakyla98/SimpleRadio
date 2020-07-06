@@ -8,15 +8,21 @@
             @click="toggleStateAudio"
             :loading="isBuffering"
         >
-            <v-icon v-if="isPlayed">{{ icons.pause }}</v-icon>
-            <v-icon v-else>{{ icons.play }}</v-icon>
+            <v-icon>
+                {{ isPlayed ? icons.pause : icons.play }}
+            </v-icon>
         </v-btn>
-        <v-btn class="controls__btn" small color="orange" @click="rewind"
-            ><v-icon>{{ icons.rewind }}</v-icon>
+        <v-btn class="controls__btn" small color="orange" @click="rewind">
+            <v-icon>{{ icons.rewind }}</v-icon>
         </v-btn>
-        <v-btn class="controls__btn" small color="orange" @click="restartStream"
-            ><v-icon>{{ icons.reload }}</v-icon></v-btn
+        <v-btn
+            class="controls__btn"
+            small
+            color="orange"
+            @click="restartStream"
         >
+            <v-icon>{{ icons.reload }}</v-icon>
+        </v-btn>
         <Timer :time="time" />
         <volume-range
             class=" controls__input-range"
@@ -35,7 +41,6 @@ import { mapState } from 'vuex'
 import { mdiPlay, mdiPause, mdiReload, mdiRewind10 } from '@mdi/js'
 
 let timeInterval
-
 
 export default {
     name: 'ControlPanel',

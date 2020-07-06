@@ -1,11 +1,8 @@
 <template>
     <div class="volume-control control-wraper">
         <div class="volume-mute" @click="$emit('toggleMute')">
-            <v-icon class="volume-icon mr-2" v-if="isMuted">
-                {{ icons.volumeOff }}
-            </v-icon>
-            <v-icon class="volume-icon mr-2" v-else>
-                {{ icons.volumeOn }}
+            <v-icon class="volume-icon mr-2">
+                {{ isMuted ? icons.volumeOff : icons.volumeOn }}
             </v-icon>
         </div>
         <input
@@ -22,7 +19,6 @@
     </div>
 </template>
 <script>
-
 import { mdiVolumeOff, mdiVolumeHigh } from '@mdi/js'
 
 export default {
@@ -57,18 +53,3 @@ export default {
     },
 }
 </script>
-<style lang="scss">
-@import '../style/vars.scss';
-.volume-control {
-    display: flex;
-    flex-grow: 1;
-    // min-width: 250px;
-    .volume-icon {
-        cursor: pointer;
-        color: black;
-    }
-    .control-wraper {
-        flex-grow: 1;
-    }
-}
-</style>

@@ -23,7 +23,9 @@ export default {
         ...mapMutations(['changeLoadingState']),
     },
     computed: {
-        ...mapState(['isLoading']),
+        ...mapState({
+            isLoading: state => state.isLoading,
+        }),
     },
     async mounted() {
         await this.fetchStations()
