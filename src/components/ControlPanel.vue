@@ -79,12 +79,14 @@ export default {
             this.isBuffering = true
             try {
                 await this.$refs.currentAudio.play()
-                this.isBuffering = false
                 this.isPlayed = true
             } catch {
-                this.isBuffering = false
                 this.isPlayed = false
-                console.warn('[CE]-[Too often play requests]')
+                console.warn(
+                    '[USE] - [Too often play requests, playing is stopped]'
+                )
+            } finally {
+                this.isBuffering = false
             }
         },
         stopAudio() {

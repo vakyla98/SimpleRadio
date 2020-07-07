@@ -1,4 +1,4 @@
-CE - Custom error | 
+USE - user side error | 
 BG - bug | UX - User exp | UP - upgrade  
 
 UX - unmute when volume changing
@@ -12,4 +12,5 @@ BG[2] - keyboard component emits event at all entrypoints
 
 UP - filtering
 UP - login and favourite
+UX - default image
 
