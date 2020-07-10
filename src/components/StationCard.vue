@@ -1,5 +1,6 @@
 <template>
     <div class="station-card">
+        <slot></slot>
         <img
             class="station-card__img"
             :src="station.image"
@@ -20,7 +21,7 @@ export default {
     data() {
         return {
             defaultImage: require('@/assets/img/station-card_default.png'),
-        }npm
+        }
     },
     methods: {
         setDefaultImage(e) {
