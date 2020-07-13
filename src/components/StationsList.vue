@@ -6,15 +6,20 @@
             :key="station.name"
             :station="station"
             @click.native="$router.push({ path: `/player/${station.route}` })"
-        />
+        >
+            <Star />
+        </station-card>
     </transition-group>
 </template>
 <script>
-import StationCard from './StationCard'
+import StationCard from './StationCard.vue'
+import Star from './Star.vue'
+
 export default {
     name: 'StationList',
     components: {
         StationCard,
+        Star,
     },
     props: {
         stations: {

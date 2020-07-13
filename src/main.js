@@ -19,5 +19,3 @@ new Vue({
     Vuelidate,
     render: h => h(App),
 }).$mount('#app')
-
-  

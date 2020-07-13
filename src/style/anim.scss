@@ -44,13 +44,14 @@
     }
 }
 
-.card{
+.card {
     //card must have 'transition:all'
     &-list-leave-active {
         position: absolute;
     }
+ 
     &-list-enter,
     &-list-leave-to {
         opacity: 0;
-    } 
+    }
 }

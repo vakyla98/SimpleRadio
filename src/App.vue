@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
+// import { ls_service } from './services'
 import Header from './components/Header'
 import LoadingOverlay from './components/LoadingOverlay'
 export default {
@@ -19,8 +20,11 @@ export default {
         LoadingOverlay,
     },
     methods: {
+        ...mapMutations({
+            updateFavouritesStations: state =>
+                state.userModule.updateFavouritesStations,
+        }),
         ...mapActions(['fetchStations']),
-        ...mapMutations(['changeLoadingState']),
     },
     computed: {
         ...mapState({
@@ -29,6 +33,7 @@ export default {
     },
     async mounted() {
         await this.fetchStations()
+        this.updateFavouritesStations(ls_service.getFavourites())
     },
 }
 </script>

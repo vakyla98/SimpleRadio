@@ -10,11 +10,11 @@ export default {
         },
     },
     actions: {
-        async fetchStations(ctx) {
-            ctx.commit('changeLoadingState', true)
+        async fetchStations({ commit }) {
+            commit('changeLoadingState', true)
             let stations = await stationService.getAllStations()
-            ctx.commit('updateStations', stations)
-            ctx.commit('changeLoadingState', false)
+            commit('updateStations', stations)
+            commit('changeLoadingState', false)
         },
     },
     getters: {

@@ -1,5 +1,6 @@
 <template>
     <div class="station-card">
+        <slot></slot>
         <img
             class="station-card__img"
             :src="station.image"

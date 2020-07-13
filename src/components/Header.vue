@@ -22,36 +22,48 @@
         >
             <v-list nav dense>
                 <v-list-item-group active-class="orange--text text--accent-4">
-                    <v-list-item to="/" exact>
-                        <v-list-item-icon>
-                            <v-icon>{{ icons.home }}</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title>All stations</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item to="/add-station">
-                        <v-list-item-icon>
-                            <v-icon>{{ icons.plus }}</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title>Add station</v-list-item-title>
-                    </v-list-item>
+                    <menu-link
+                        v-for="link in links"
+                        :link="link"
+                        :key="link.route"
+                    />
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>
     </div>
 </template>
 <script>
-import { mdiRadio, mdiMenu, mdiPlus, mdiHome } from '@mdi/js'
+import { mdiRadio, mdiMenu, mdiHome, mdiStar, mdiPlus } from '@mdi/js'
+import MenuLink from './Base/MenuLink.vue'
 export default {
     name: 'Header',
+    components: {
+        MenuLink,
+    },
     data() {
         return {
             drawer: false,
             icons: {
                 radio: mdiRadio,
                 menu: mdiMenu,
-                plus: mdiPlus,
-                home: mdiHome,
             },
+            links: [
+                {
+                    text: 'All stations',
+                    route: '/',
+                    icon: mdiHome,
+                },
+                {
+                    text: 'Favourite',
+                    route: '/favourite',
+                    icon: mdiStar,
+                },
+                {
+                    text: 'Add station',
+                    route: '/add-station',
+                    icon: mdiPlus,
+                },
+            ],
         }
     },
 }

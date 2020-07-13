@@ -1,6 +1,12 @@
 export default {
-    state: {},
-    mutations: {},
+    state: {
+        favouritesStations: [],
+    },
+    mutations: {
+        updateFavouritesStations(state, stations) {
+            state.favouritesStations = stations
+        },
+    },
     actions: {},
     getters: {},
 }

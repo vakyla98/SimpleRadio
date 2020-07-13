@@ -160,7 +160,7 @@ export default {
     },
     created() {
         let volume = localStorage.getItem('volume')
-        if (volume !== null) {
+        if (volume) {
             this.volume = volume
         }
         timeInterval = setInterval(() => {
