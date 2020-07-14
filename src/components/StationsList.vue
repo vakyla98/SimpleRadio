@@ -7,24 +7,26 @@
             :station="station"
             @click.native="stationHandler(station)"
         >
-            <!-- <Star
-                :isFavourite="favourites.includes(station.route)"
-                @click.native.stop="starHandler(station.route)"
-            /> -->
-            <input class="star" checked type="checkbox" @click.stop="" />
+            <Favourite
+                :isFavourite="favouritesStations.includes(station.route)"
+                :route="station.route"
+                @click.native.stop=""
+                @toggleState="favouriteHandler"
+            />
         </station-card>
     </transition-group>
 </template>
 <script>
 import StationCard from './StationCard.vue'
-// import Star from './Star.vue'
-import { mapState } from 'vuex'
+import Favourite from './Favourite.vue'
+import { ls_service } from '../services'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: 'StationList',
     components: {
         StationCard,
-        // Star,
+        Favourite,
     },
     props: {
         stations: {
@@ -33,16 +35,18 @@ export default {
         },
     },
     methods: {
+        ...mapMutations(['toggleFavourite']),
         stationHandler(station) {
             this.$router.push({ path: `/player/${station.route}` })
         },
-        starHandler(stationRoute) {
-            console.log(stationRoute)
+        favouriteHandler(stationRoute) {
+            this.toggleFavourite(stationRoute)
+            ls_service.setFavourites(this.favouritesStations)
         },
     },
     computed: {
         ...mapState({
-            favourites: state => state.userModule.favouritesStations,
+            favouritesStations: state => state.userModule.favouritesStations,
         }),
     },
 }
@@ -64,35 +68,5 @@ export default {
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.5);
     }
-}
-.star {
-    position: absolute;
-    align-self: flex-end;
-    transform: translate(-4px, 4px);
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    line-height: 16px;
-    visibility: hidden;
-    cursor: pointer;
-}
-.star:before {
-    content: '';
-    border: 2px solid #f57f17;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    visibility: visible;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-}
-.star:checked:before {
-    content: '';
-    position: absolute;
-    background-color: #f57f17;
-    width: 15px;
-    height: 15px;
 }
 </style>
