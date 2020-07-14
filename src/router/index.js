@@ -9,6 +9,11 @@ const routes = [
         component: () => import('../views/StationsPage.vue'),
     },
     {
+        path: '/favourites',
+        name: 'FavouritesStationsPage',
+        component: () => import('../views/FavouritesStationsPage.vue'),
+    },
+    {
         path: '/add-station',
         name: 'CreateStationPage',
         component: () => import('../views/CreateStationPage.vue'),

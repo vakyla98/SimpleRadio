@@ -11,7 +11,6 @@ export default {
     },
     actions: {
         async fetchStations({ commit }) {
-            console.log('fetched')
             commit('changeLoadingState', true)
             let stations = await stationService.getAllStations()
             commit('updateStations', stations)
@@ -33,6 +32,11 @@ export default {
             let prevIndex = curIndex - 1
             if (prevIndex < 0) prevIndex = state.stations.length - 1
             return state.stations[prevIndex]
+        },
+        getFavouritesStations(state, getters, rootState) {
+            return state.stations.filter(el =>
+                rootState.userModule.favouritesStations.includes(el.route)
+            )
         },
     },
 }

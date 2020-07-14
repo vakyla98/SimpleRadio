@@ -55,7 +55,7 @@ export default {
                 },
                 {
                     text: 'Favourite',
-                    route: '/favourite',
+                    route: '/favourites',
                     icon: mdiStar,
                 },
                 {
