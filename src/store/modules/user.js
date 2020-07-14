@@ -3,8 +3,10 @@ export default {
         favouritesStations: [],
     },
     mutations: {
-        updateFavouritesStations(state, stations) {
-            state.favouritesStations = stations
+        updateFavourites(state, favourites) {
+            if (favourites.length) {
+                state.favouritesStations = favourites
+            }
         },
     },
     actions: {},

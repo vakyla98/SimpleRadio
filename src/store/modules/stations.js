@@ -11,6 +11,7 @@ export default {
     },
     actions: {
         async fetchStations({ commit }) {
+            console.log('fetched')
             commit('changeLoadingState', true)
             let stations = await stationService.getAllStations()
             commit('updateStations', stations)
