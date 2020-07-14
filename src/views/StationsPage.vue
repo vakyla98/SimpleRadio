@@ -11,6 +11,7 @@
                 <stations-list
                     :stations="filteredStations"
                     v-if="filteredStations.length"
+                    transitionName='card-list'
                 />
                 <p
                     v-else

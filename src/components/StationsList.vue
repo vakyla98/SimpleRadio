@@ -1,5 +1,5 @@
 <template>
-    <transition-group name="card-list" tag="div" class="station-list">
+    <transition-group :name="transitionName" tag="div" class="station-list">
         <station-card
             class="station-card_clickable"
             v-for="station in stations"
@@ -33,6 +33,7 @@ export default {
             type: Array,
             required: true,
         },
+        transitionName: String,
     },
     methods: {
         ...mapMutations(['toggleFavourite']),
@@ -63,7 +64,7 @@ export default {
     grid-gap: 10px;
 }
 .station-card_clickable {
-    transition: all 0.5s ease-in-out, box-shadow 0.1s;
+    transition: all 0.3s ease-in-out, box-shadow 0.1s;
     &:hover {
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.5);
