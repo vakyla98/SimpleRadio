@@ -6,23 +6,16 @@
             :key="station.name"
             :station="station"
             @click.native="stationHandler(station)"
-        >
-            <Favourite
-                :route="station.route"
-                @click.native.stop=""
-            />
-        </station-card>
+        />
     </transition-group>
 </template>
 <script>
 import StationCard from './StationCard.vue'
-import Favourite from './Favourite.vue'
 
 export default {
     name: 'StationList',
     components: {
         StationCard,
-        Favourite,
     },
     props: {
         stations: {

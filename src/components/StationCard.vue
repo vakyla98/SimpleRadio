@@ -1,6 +1,6 @@
 <template>
     <div class="station-card">
-        <slot></slot>
+        <Favourite :route="station.route" @click.native.stop="" />
         <img
             class="station-card__img"
             :src="station.image"
@@ -10,8 +10,13 @@
     </div>
 </template>
 <script>
+import Favourite from './Favourite.vue'
+
 export default {
     name: 'StationCard',
+    components: {
+        Favourite,
+    },
     props: {
         station: {
             type: Object,
