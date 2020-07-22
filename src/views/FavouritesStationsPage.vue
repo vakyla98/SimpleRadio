@@ -12,12 +12,7 @@
                     <router-link to="/">stations page</router-link>
                 </p>
             </transition>
-            <!-- <button @click="clean">
-                Clear
-            </button>
-            <button @click="add">
-                Add
-            </button> -->
+
         </div>
     </keep-alive>
 </template>
@@ -32,17 +27,6 @@ export default {
         ...mapGetters({
             favourites: 'getFavouritesStations',
         }),
-    },
-    methods: {
-        clean() {
-            localStorage.setItem('favourites', '')
-        },
-        add() {
-            localStorage.setItem(
-                'favourites',
-                '["dfm","djfm","energy","europaplus","flash","jam","kiss-ukr","lounge","nostalgie","power","radio-hb","relax","retro","roks","avtoradio","zaycev-pop","lux","prosto-r","friday","hit-fm"]'
-            )
-        },
     },
 }
 </script>

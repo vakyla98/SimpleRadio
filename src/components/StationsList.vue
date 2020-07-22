@@ -8,10 +8,8 @@
             @click.native="stationHandler(station)"
         >
             <Favourite
-                :isFavourite="favouritesStations.includes(station.route)"
                 :route="station.route"
                 @click.native.stop=""
-                @toggleState="favouriteHandler"
             />
         </station-card>
     </transition-group>
@@ -19,8 +17,6 @@
 <script>
 import StationCard from './StationCard.vue'
 import Favourite from './Favourite.vue'
-import { ls_service } from '../services'
-import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: 'StationList',
@@ -36,19 +32,9 @@ export default {
         transitionName: String,
     },
     methods: {
-        ...mapMutations(['toggleFavourite']),
         stationHandler(station) {
             this.$router.push({ path: `/player/${station.route}` })
         },
-        favouriteHandler(stationRoute) {
-            this.toggleFavourite(stationRoute)
-            ls_service.setFavourites(this.favouritesStations)
-        },
-    },
-    computed: {
-        ...mapState({
-            favouritesStations: state => state.userModule.favouritesStations,
-        }),
     },
 }
 </script>
