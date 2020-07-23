@@ -33,7 +33,14 @@
     </div>
 </template>
 <script>
-import { mdiRadio, mdiMenu, mdiHome, mdiStar, mdiPlus } from '@mdi/js'
+import {
+    mdiRadio,
+    mdiMenu,
+    mdiHome,
+    mdiStar,
+    mdiPlus,
+    mdiInformation,
+} from '@mdi/js'
 import MenuLink from './Base/MenuLink.vue'
 export default {
     name: 'Header',
@@ -62,6 +69,11 @@ export default {
                     text: 'Add station',
                     route: '/add-station',
                     icon: mdiPlus,
+                },
+                {
+                    text: 'Help',
+                    route: '/help',
+                    icon: mdiInformation,
                 },
             ],
         }

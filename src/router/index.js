@@ -19,6 +19,11 @@ const routes = [
         component: () => import('../views/CreateStationPage.vue'),
     },
     {
+        path: '/help',
+        name: 'HelpPage',
+        component: () => import('../views/HelpPage.vue'),
+    },
+    {
         path: '/player/:stationRoute',
         name: 'Player',
         component: () => import('../views/PlayerPage.vue'),
