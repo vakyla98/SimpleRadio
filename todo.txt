@@ -2,8 +2,10 @@ USE - user side error |
 BG - bug | UX - User exp | UP - upgrade  
 
 UX - unmute when volume changing
+UX - default image
 
 UP - station search
+UP - favourite
 
 BG[1] - dblclick on change station makes infinite loading 
 BG[2] - keyboard component emits event at all entrypoints
@@ -11,6 +13,6 @@ BG[2] - keyboard component emits event at all entrypoints
 --------------------------------
 
 UP - filtering
-UP - login and favourite
-UX - default image
+UP - login
+
 

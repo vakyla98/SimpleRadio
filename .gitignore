@@ -2,6 +2,7 @@
 node_modules
 
 desktop.ini
+dist/report.html
 
 # local env files
 .env.local
