@@ -172,26 +172,3 @@ export default {
     },
 }
 </script>
-
-<style lang="scss">
-@import '../style/mixins.scss';
-.controls {
-    align-self: center;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    &__btn {
-        margin: 3px;
-        flex-grow: 1;
-        @include screen(min, 600px) {
-            flex-grow: 0;
-        }
-    }
-    &__input-range {
-        margin: 3px;
-        min-width: 100px;
-    }
-}
-</style>

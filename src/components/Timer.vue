@@ -25,8 +25,4 @@ export default {
     },
 }
 </script>
-<style lang="scss">
-.colon {
-    white-space: pre;
-}
-</style>
+
