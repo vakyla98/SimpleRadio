@@ -1,7 +1,6 @@
 export class LS_service {
     getFavourites() {
-        let favourites = JSON.parse(localStorage.getItem('favourites'))
-        return favourites || []
+        return JSON.parse(localStorage.getItem('favourites')) || []
     }
     setFavourites(favourites) {
         localStorage.setItem('favourites', JSON.stringify(favourites))
