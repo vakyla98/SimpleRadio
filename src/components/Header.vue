@@ -80,8 +80,3 @@ export default {
     },
 }
 </script>
-<style>
-.v-toolbar__title {
-    display: flex;
-}
-</style>

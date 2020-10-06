@@ -111,7 +111,7 @@ export default {
             this.$refs.currentAudio.muted = false
         },
         toggleMute() {
-            this.isMuted === true ? this.unmute() : this.mute()
+            this.isMuted ? this.unmute() : this.mute()
         },
         saveVolume: debounce(volume => {
             localStorage.setItem('volume', volume)
