@@ -1,9 +1,10 @@
 //components
-@import './components/station-card.scss';
-@import './components/volume-range.scss';
-@import './components/favourite.scss';
-@import './components/timer.scss';
-@import './components/controll-panel.scss';
+@import './components/station-card';
+@import './components/volume-range';
+@import './components/favourite';
+@import './components/timer';
+@import './components/controll-panel';
 
 //views
-@import './views/station-page.scss';
+@import './views/station-page';
+@import './views/create-station-page';

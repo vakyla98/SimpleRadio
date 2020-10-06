@@ -30,7 +30,7 @@ export default {
     },
     async mounted() {
         await this.fetchStations()
-        let favourites = ls_service.getFavourites()
+        const favourites = ls_service.getFavourites()
         this.updateFavourites(favourites)
     },
 }

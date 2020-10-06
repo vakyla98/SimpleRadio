@@ -123,7 +123,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.form-container {
-    max-width: 800px;
-}
+
 </style>
